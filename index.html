@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GameVerse 100</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#070b18;
+    color:white;
+    transition:.3s;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+header{
+    height:70px;
+    background:#0d1328;
+    border-bottom:1px solid #252d4d;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 4%;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#a855f7;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+nav a:hover{
+    color:#c084fc;
+}
+
+.header-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.header-btn{
+    background:#171e38;
+    color:white;
+    border:1px solid #30395f;
+    padding:9px 12px;
+    border-radius:9px;
+}
+
+.hero{
+    min-height:350px;
+    padding:70px 7%;
+    display:flex;
+    align-items:center;
+
+    background:
+    radial-gradient(
+        circle at 80% 40%,
+        #6d28d9,
+        transparent 30%
+    ),
+    linear-gradient(
+        135deg,
+        #080c1d,
+        #151d40
+    );
+}
+
+.hero h1{
+    font-size:58px;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#a855f7;
+}
+
+.hero p{
+    color:#aeb7d0;
+    font-size:19px;
+    max-width:650px;
+    margin-bottom:25px;
+}
+
+.main-button{
+    background:linear-gradient(
+        90deg,
+        #7c3aed,
+        #c026d3
+    );
+
+    color:white;
+    border:none;
+    padding:15px 25px;
+    border-radius:10px;
+}
+
+.container{
+    width:92%;
+    max-width:1400px;
+    margin:35px auto;
+}
+
+.search-area{
+    display:flex;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+#search{
+    flex:1;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #30395f;
+    background:#11182e;
+    color:white;
+    outline:none;
+}
+
+#category{
+    padding:15px;
+    border-radius:10px;
+    background:#11182e;
+    color:white;
+    border:1px solid #30395f;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.games{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.game-card{
+    background:#10172d;
+    border:1px solid #293354;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.game-card:hover{
+    transform:translateY(-7px);
+    border-color:#a855f7;
+    box-shadow:
+    0 15px 40px #0008;
+}
+
+.game-image{
+    height:140px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:60px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #172554,
+        #581c87
+    );
+}
+
+.game-info{
+    padding:16px;
+}
+
+.game-info h3{
+    margin-bottom:7px;
+}
+
+.game-info p{
+    color:#929bb8;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.online{
+    color:#4ade80;
+}
+
+.game-buttons{
+    display:flex;
+    gap:7px;
+}
+
+.join{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#7c3aed;
+    color:white;
+}
+
+.favorite{
+    width:42px;
+    border:none;
+    border-radius:8px;
+    background:#1b2442;
+    color:white;
+    font-size:18px;
+}
+
+.stats{
+    margin-top:40px;
+
+    display:grid;
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.stat{
+    background:#10172d;
+    border:1px solid #293354;
+    border-radius:14px;
+    padding:22px;
+    text-align:center;
+}
+
+.stat h2{
+    color:#c084fc;
+    font-size:30px;
+}
+
+.stat p{
+    color:#8893b0;
+    margin-top:5px;
+}
+
+footer{
+    text-align:center;
+    color:#69738f;
+    padding:50px;
+}
+
+
+/* PROFILE */
+
+#profile{
+    display:none;
+
+    position:fixed;
+    top:78px;
+    right:20px;
+
+    width:280px;
+
+    background:#11182e;
+    border:1px solid #39436c;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    z-index:200;
+}
+
+.avatar{
+    font-size:60px;
+    text-align:center;
+}
+
+
+/* SETTINGS */
+
+#settings{
+    display:none;
+
+    position:fixed;
+    top:78px;
+    right:20px;
+
+    width:280px;
+
+    background:#11182e;
+    border:1px solid #39436c;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    z-index:200;
+}
+
+.setting{
+    display:flex;
+    justify-content:space-between;
+    margin:20px 0;
+}
+
+
+/* GAME SCREEN */
+
+#gameScreen{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:#050816;
+
+    z-index:500;
+}
+
+.game-header{
+    height:65px;
+
+    background:#0d1328;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    border-bottom:1px solid #293354;
+}
+
+.game-header-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.game-header button{
+    padding:9px 13px;
+    border:none;
+    border-radius:8px;
+    color:white;
+}
+
+.restart{
+    background:#7c3aed;
+}
+
+.pause{
+    background:#eab308;
+}
+
+.leave{
+    background:#ef4444;
+}
+
+#gameArea{
+    height:
+    calc(100vh - 65px);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+}
+
+
+/* SNAKE */
+
+#snakeCanvas{
+    width:500px;
+    max-width:90vw;
+
+    background:#050b15;
+
+    border:3px solid #8b5cf6;
+
+    border-radius:10px;
+}
+
+.score{
+    font-size:20px;
+    margin:15px;
+}
+
+.controls{
+    text-align:center;
+    margin-top:15px;
+}
+
+.controls button{
+    width:50px;
+    height:40px;
+
+    margin:3px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#7c3aed;
+    color:white;
+}
+
+
+/* CLICKER */
+
+.clicker{
+    text-align:center;
+}
+
+.click-button{
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color:white;
+
+    font-size:30px;
+
+    border:none;
+
+    box-shadow:
+    0 0 50px #8b5cf655;
+}
+
+.click-button:active{
+    transform:scale(.94);
+}
+
+
+/* MEMORY */
+
+.memory-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,80px);
+
+    gap:10px;
+}
+
+.memory-card{
+    width:80px;
+    height:80px;
+
+    background:#252f55;
+
+    color:transparent;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:35px;
+}
+
+.memory-card.open{
+    color:white;
+    background:#7c3aed;
+}
+
+
+/* LIGHT MODE */
+
+.light{
+    background:#f1f5f9;
+    color:#111827;
+}
+
+.light header,
+.light .game-card,
+.light .stat,
+.light #search,
+.light #category,
+.light #settings,
+.light #profile{
+    background:white;
+    color:#111827;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .search-area{
+        flex-direction:column;
+    }
+
+    .stats{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+🎮 Game<span>Verse</span>
+</div>
+
+
+<nav>
+
+<a onclick="goHome()">
+Home
+</a>
+
+<a href="#games">
+Games
+</a>
+
+<a href="#stats">
+Stats
+</a>
+
+<a onclick="openProfile()">
+Profile
+</a>
+
+</nav>
+
+
+<div class="header-buttons">
+
+<button
+class="header-btn"
+onclick="toggleSound()"
+>
+🔊
+</button>
+
+<button
+class="header-btn"
+onclick="openProfile()"
+>
+👤
+</button>
+
+<button
+class="header-btn"
+onclick="openSettings()"
+>
+⚙️
+</button>
+
+</div>
+
+</header>
+
+
+
+<!-- PROFILE -->
+
+<div id="profile">
+
+<div class="avatar">
+😎
+</div>
+
+<h2 style="text-align:center">
+Player
+</h2>
+
+<br>
+
+<p>
+🎮 Games Played:
+<b id="profilePlayed">0</b>
+</p>
+
+<br>
+
+<p>
+🏆 Best Score:
+<b id="profileBest">0</b>
+</p>
+
+<br>
+
+<p>
+⭐ Level:
+<b id="profileLevel">1</b>
+</p>
+
+</div>
+
+
+
+<!-- SETTINGS -->
+
+<div id="settings">
+
+<h3>
+⚙️ Settings
+</h3>
+
+<div class="setting">
+
+<span>
+Dark Mode
+</span>
+
+<button
+onclick="toggleTheme()"
+>
+🌙
+</button>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+Sound
+</span>
+
+<button
+onclick="toggleSound()"
+>
+🔊
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+Play.
+<span>Fun.</span>
+Win! 🎮
+</h1>
+
+<p>
+Welcome to GameVerse — a mini gaming platform
+with 100 games. Search, join games, compete
+for high scores and have fun!
+</p>
+
+<button
+class="main-button"
+onclick="randomGame()"
+>
+🎲 PLAY RANDOM GAME
+</button>
+
+</div>
+
+</section>
+
+
+
+<div class="container">
+
+
+<!-- SEARCH -->
+
+<div class="search-area">
+
+<input
+id="search"
+placeholder="🔎 Search 100 games..."
+onkeyup="searchGames()"
+>
+
+
+<select
+id="category"
+onchange="filterGames()"
+>
+
+<option value="all">
+All Categories
+</option>
+
+<option value="Arcade">
+Arcade
+</option>
+
+<option value="Action">
+Action
+</option>
+
+<option value="Puzzle">
+Puzzle
+</option>
+
+<option value="Racing">
+Racing
+</option>
+
+<option value="Sports">
+Sports
+</option>
+
+<option value="Adventure">
+Adventure
+</option>
+
+<option value="Strategy">
+Strategy
+</option>
+
+</select>
+
+</div>
+
+
+
+<div
+class="section-title"
+id="games"
+>
+
+<h2>
+🔥 All Games
+</h2>
+
+<span id="gameCount">
+100 Games
+</span>
+
+</div>
+
+
+
+<!-- GAME LIST -->
+
+<div
+class="games"
+id="gameList"
+>
+</div>
+
+
+
+<!-- STATS -->
+
+<div
+class="stats"
+id="stats"
+>
+
+<div class="stat">
+
+<h2 id="gamesPlayed">
+0
+</h2>
+
+<p>
+Games Played
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2 id="bestScore">
+0
+</h2>
+
+<p>
+Best Score
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2 id="level">
+1
+</h2>
+
+<p>
+Player Level
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2>
+100
+</h2>
+
+<p>
+Games Available
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<footer>
+
+🎮 GameVerse © 2026
+
+<br><br>
+
+100 Games • Play • Compete • Have Fun
+
+</footer>
+
+
+
+<!-- GAME SCREEN -->
+
+<div id="gameScreen">
+
+
+<div class="game-header">
+
+<h2 id="gameTitle">
+Game
+</h2>
+
+
+<div class="game-header-buttons">
+
+<button
+class="restart"
+onclick="restartGame()"
+>
+🔄 Restart
+</button>
+
+<button
+class="pause"
+onclick="pauseGame()"
+>
+⏸ Pause
+</button>
+
+<button
+class="leave"
+onclick="leaveGame()"
+>
+🚪 Leave Game
+</button>
+
+</div>
+
+</div>
+
+
+<div id="gameArea">
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+100 GAME DATABASE
+===================================== */
+
+
+const gameNames=[
+
+"Snake Rush",
+"Crazy Clicker",
+"Memory Match",
+"Sky Dodge",
+"Space Shooter",
+"Car Drift",
+"Ninja Run",
+"Pixel Jump",
+"Color Match",
+"Basket Hoop",
+
+"Zombie Escape",
+"Alien Attack",
+"Dragon Fight",
+"Robot Battle",
+"Monster Run",
+"Rocket Race",
+"Football Star",
+"Chess Master",
+"Checkers",
+"Tic Tac Toe",
+
+"Connect Four",
+"Minesweeper",
+"Sudoku",
+"Tower Defense",
+"Dungeon Quest",
+"Pirate Adventure",
+"Treasure Hunt",
+"Jungle Run",
+"City Driver",
+"Bike Racing",
+
+"Snowboard Rush",
+"Desert Race",
+"Ocean Adventure",
+"Island Survival",
+"Castle Defense",
+"Knight Battle",
+"Magic Quest",
+"Wizard Duel",
+"Samurai Fight",
+"Ninja Battle",
+
+"Space Race",
+"Moon Landing",
+"Mars Explorer",
+"Galaxy War",
+"Star Defender",
+"Asteroid Blast",
+"UFO Escape",
+"Rocket Defender",
+"Planet Runner",
+"Cosmic Jump",
+
+"Fire Jump",
+"Ice Runner",
+"Lava Escape",
+"Water Slide",
+"Sky Runner",
+"Cloud Jump",
+"Rainbow Rush",
+"Lightning Dash",
+"Speed Runner",
+"Endless Road",
+
+"Drift King",
+"Street Racer",
+"Formula Speed",
+"Motorbike Pro",
+"Truck Driver",
+"Police Chase",
+"Taxi Driver",
+"Traffic Escape",
+"Highway Racer",
+"Rally Master",
+
+"Basket Master",
+"Penalty King",
+"Goal Champion",
+"Tennis Star",
+"Golf Master",
+"Bowling Pro",
+"Boxing Hero",
+"Wrestling Clash",
+"Skate Master",
+"Surf Rider",
+
+"Word Master",
+"Math Challenge",
+"Brain Trainer",
+"Puzzle Box",
+"2048",
+"Block Puzzle",
+"Jigsaw World",
+"Find The Odd",
+"Reaction Test",
+"Memory Rush",
+
+"Viking Quest",
+"Super Hero",
+"Monster Hunter",
+"Ghost Escape",
+"Haunted House",
+"Secret Agent",
+"Spy Mission",
+"Army Commander",
+"Battle Arena",
+"Ultimate Adventure"
+
+];
+
+
+const emojis=[
+
+"🐍","🖱️","🧠","☄️","🚀",
+"🏎️","🥷","🕹️","🎨","🏀",
+"🧟","👽","🐉","🤖","👹",
+"🚀","⚽","♟️","🔴","❌",
+"🟡","💣","🔢","🏰","⚔️",
+"🏴‍☠️","💎","🌴","🚕","🏍️",
+"🏂","🏜️","🌊","🏝️","🏯",
+"🛡️","🧙","✨","⚔️","🥷",
+"🌌","🌙","🔴","⭐","🌠",
+"☄️","🛸","🚀","🪐","🌌",
+"🔥","❄️","🌋","💦","☁️",
+"🌈","⚡","🏃","🛣️",
+"🏎️","🏁","🏎️","🏍️","🚚",
+"🚓","🚕","🚦","🛣️","🏆",
+"🏀","⚽","🥅","🎾","⛳",
+"🎳","🥊","🤼","🛹","🏄",
+"🔤","➗","🧠","🧩","🔢",
+"🧱","🧩","🔍","⚡","🧠",
+"⚔️","🦸","👹","👻","🏚️",
+"🕵️","🕵️","🪖","⚔️","🏆"
+
+];
+
+
+const categories=[
+
+"Arcade",
+"Arcade",
+"Puzzle",
+"Action",
+"Action",
+"Racing",
+"Action",
+"Arcade",
+"Puzzle",
+"Sports",
+
+"Action",
+"Action",
+"Action",
+"Action",
+"Action",
+"Racing",
+"Sports",
+"Strategy",
+"Strategy",
+"Puzzle",
+
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Strategy",
+"Adventure",
+"Adventure",
+"Adventure",
+"Adventure",
+"Racing",
+"Racing",
+
+"Racing",
+"Racing",
+"Adventure",
+"Adventure",
+"Strategy",
+"Action",
+"Adventure",
+"Action",
+"Action",
+"Action",
+
+"Racing",
+"Adventure",
+"Adventure",
+"Action",
+"Action",
+"Action",
+"Action",
+"Action",
+"Adventure",
+"Arcade",
+
+"Arcade",
+"Arcade",
+"Action",
+"Action",
+"Arcade",
+"Arcade",
+"Arcade",
+"Action",
+"Arcade",
+"Arcade",
+
+"Racing",
+"Racing",
+"Racing",
+"Racing",
+"Racing",
+"Action",
+"Racing",
+"Racing",
+"Racing",
+"Racing",
+
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+"Sports",
+
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+"Puzzle",
+
+"Adventure",
+"Action",
+"Action",
+"Action",
+"Adventure",
+"Action",
+"Action",
+"Strategy",
+"Action",
+"Adventure"
+
+];
+
+
+
+/* =====================================
+STATE
+===================================== */
+
+
+let soundOn=true;
+
+let currentGame=null;
+
+let paused=false;
+
+let gameTimer=null;
+
+let gamesPlayed=
+Number(
+localStorage.getItem("gvGames")||0
+);
+
+let bestScore=
+Number(
+localStorage.getItem("gvBest")||0
+);
+
+
+
+/* =====================================
+CREATE 100 CARDS
+===================================== */
+
+
+function createGames(){
+
+const list=
+document.getElementById(
+"gameList"
+);
+
+list.innerHTML="";
+
+
+gameNames.forEach(
+(name,index)=>{
+
+let players=
+Math.floor(
+Math.random()*9000
+)+100;
+
+
+let card=
+document.createElement(
+"div"
+);
+
+card.className="game-card";
+
+card.dataset.category=
+categories[index];
+
+card.dataset.name=
+name.toLowerCase();
+
+
+card.innerHTML=`
+
+<div class="game-image">
+${emojis[index]}
+</div>
+
+<div class="game-info">
+
+<h3>
+${name}
+</h3>
+
+<p>
+${categories[index]}
+•
+<span class="online">
+● ${players} playing
+</span>
+</p>
+
+<div class="game-buttons">
+
+<button
+class="join"
+onclick="joinGame(${index})"
+>
+▶ JOIN GAME
+</button>
+
+<button
+class="favorite"
+onclick="favorite(this)"
+>
+♡
+</button>
+
+</div>
+
+</div>
+
+`;
+
+list.appendChild(card);
+
+});
+
+}
+
+
+createGames();
+
+
+
+/* =====================================
+JOIN GAME
+===================================== */
+
+
+function joinGame(index){
+
+currentGame=index;
+
+gamesPlayed++;
+
+localStorage.setItem(
+"gvGames",
+gamesPlayed
+);
+
+document.getElementById(
+"gamesPlayed"
+).textContent=
+gamesPlayed;
+
+
+document.getElementById(
+"profilePlayed"
+).textContent=
+gamesPlayed;
+
+
+document.getElementById(
+"gameScreen"
+).style.display=
+"block";
+
+
+document.getElementById(
+"gameTitle"
+).textContent=
+"Connecting...";
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=`
+
+<h2>
+🎮 Joining ${gameNames[index]}...
+</h2>
+
+<p style="margin-top:10px;color:#9ca3af">
+Finding game server...
+</p>
+
+`;
+
+
+setTimeout(
+()=>{
+
+/*
+The first 4 games are playable.
+The other 96 have a game lobby.
+*/
+
+if(index===0)
+loadSnake();
+
+else if(index===1)
+loadClicker();
+
+else if(index===2)
+loadMemory();
+
+else if(index===3)
+loadDodge();
+
+else
+loadLobby(index);
+
+},
+700
+);
+
+}
+
+
+
+/* =====================================
+LOBBY FOR OTHER GAMES
+===================================== */
+
+
+function loadLobby(index){
+
+document.getElementById(
+"gameTitle"
+).textContent=
+emojis[index]+" "+
+gameNames[index];
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=`
+
+<div style="text-align:center">
+
+<div style="font-size:80px">
+${emojis[index]}
+</div>
+
+<h1 style="margin:15px">
+${gameNames[index]}
+</h1>
+
+<p style="color:#9ca3af">
+${categories[index]} Game
+</p>
+
+<br>
+
+<div style="
+background:#10172d;
+padding:25px;
+border-radius:15px;
+max-width:450px;
+">
+
+<h2>
+🟢 Game Server Ready
+</h2>
+
+<p style="
+color:#9ca3af;
+margin:15px;
+">
+You joined the game!
+</p>
+
+<button
+class="main-button"
+onclick="fakePlay(${index})"
+>
+🎮 START GAME
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+
+function fakePlay(index){
+
+alert(
+"🎮 You are playing "+
+gameNames[index]+
+"!\n\nThis game is ready to be added as a full playable mini-game."
+);
+
+}
+
+
+
+/* =====================================
+LEAVE GAME
+===================================== */
+
+
+function leaveGame(){
+
+clearInterval(gameTimer);
+
+currentGame=null;
+
+document.getElementById(
+"gameScreen"
+).style.display=
+"none";
+
+paused=false;
+
+}
+
+
+
+/* =====================================
+RESTART
+===================================== */
+
+
+function restartGame(){
+
+if(currentGame!==null){
+
+joinGame(currentGame);
+
+}
+
+}
+
+
+
+/* =====================================
+PAUSE
+===================================== */
+
+
+function pauseGame(){
+
+paused=!paused;
+
+}
+
+
+
+/* =====================================
+SNAKE
+===================================== */
+
+
+let snake=[];
+
+let snakeFood={};
+
+let snakeDirectionValue=
+"right";
+
+let nextDirection=
+"right";
+
+let snakeScore=0;
+
+let snakeCanvas;
+
+let snakeCtx;
+
+
+function loadSnake(){
+
+document.getElementById(
+"gameTitle"
+).textContent=
+"🐍 Snake Rush";
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=`
+
+<div class="score">
+Score:
+<b id="snakeScore">0</b>
+</div>
+
+<canvas
+id="snakeCanvas"
+width="500"
+height="500"
+></canvas>
+
+<div class="controls">
+
+<button onclick="snakeMove('up')">
+⬆️
+</button>
+
+<br>
+
+<button onclick="snakeMove('left')">
+⬅️
+</button>
+
+<button onclick="snakeMove('down')">
+⬇️
+</button>
+
+<button onclick="snakeMove('right')">
+➡️
+</button>
+
+</div>
+
+`;
+
+
+snakeCanvas=
+document.getElementById(
+"snakeCanvas"
+);
+
+snakeCtx=
+snakeCanvas.getContext("2d");
+
+
+snake=[
+{x:240,y:240},
+{x:220,y:240},
+{x:200,y:240}
+];
+
+
+snakeDirectionValue="right";
+
+nextDirection="right";
+
+snakeScore=0;
+
+paused=false;
+
+createFood();
+
+
+clearInterval(gameTimer);
+
+gameTimer=
+setInterval(
+updateSnake,
+110
+);
+
+drawSnake();
+
+}
+
+
+
+function createFood(){
+
+snakeFood={
+x:Math.floor(
+Math.random()*25
+)*20,
+
+y:Math.floor(
+Math.random()*25
+)*20
+};
+
+}
+
+
+
+function snakeMove(direction){
+
+if(
+direction==="up" &&
+snakeDirectionValue!=="down"
+)
+nextDirection="up";
+
+
+if(
+direction==="down" &&
+snakeDirectionValue!=="up"
+)
+nextDirection="down";
+
+
+if(
+direction==="left" &&
+snakeDirectionValue!=="right"
+)
+nextDirection="left";
+
+
+if(
+direction==="right" &&
+snakeDirectionValue!=="left"
+)
+nextDirection="right";
+
+}
+
+
+
+function updateSnake(){
+
+if(paused)
+return;
+
+
+snakeDirectionValue=
+nextDirection;
+
+
+let head={
+x:snake[0].x,
+y:snake[0].y
+};
+
+
+if(
+snakeDirectionValue==="up"
+)
+head.y-=20;
+
+
+if(
+snakeDirectionValue==="down"
+)
+head.y+=20;
+
+
+if(
+snakeDirectionValue==="left"
+)
+head.x-=20;
+
+
+if(
+snakeDirectionValue==="right"
+)
+head.x+=20;
+
+
+if(
+head.x<0 ||
+head.y<0 ||
+head.x>=500 ||
+head.y>=500
+){
+
+snakeGameOver();
+
+return;
+
+}
+
+
+for(
+let part of snake
+){
+
+if(
+head.x===part.x &&
+head.y===part.y
+){
+
+snakeGameOver();
+
+return;
+
+}
+
+}
+
+
+snake.unshift(head);
+
+
+if(
+head.x===snakeFood.x &&
+head.y===snakeFood.y
+){
+
+snakeScore++;
+
+document.getElementById(
+"snakeScore"
+).textContent=
+snakeScore;
+
+
+if(
+snakeScore>bestScore
+){
+
+bestScore=
+snakeScore;
+
+localStorage.setItem(
+"gvBest",
+bestScore
+);
+
+updateStats();
+
+}
+
+createFood();
+
+}
+
+else{
+
+snake.pop();
+
+}
+
+
+drawSnake();
+
+}
+
+
+
+function drawSnake(){
+
+snakeCtx.fillStyle=
+"#050b15";
+
+snakeCtx.fillRect(
+0,
+0,
+500,
+500
+);
+
+
+snakeCtx.strokeStyle=
+"#111c32";
+
+
+for(
+let i=0;
+i<=500;
+i+=20
+){
+
+snakeCtx.beginPath();
+
+snakeCtx.moveTo(
+i,
+0
+);
+
+snakeCtx.lineTo(
+i,
+500
+);
+
+snakeCtx.stroke();
+
+
+snakeCtx.beginPath();
+
+snakeCtx.moveTo(
+0,
+i
+);
+
+snakeCtx.lineTo(
+500,
+i
+);
+
+snakeCtx.stroke();
+
+}
+
+
+snakeCtx.fillStyle=
+"#ef4444";
+
+
+snakeCtx.beginPath();
+
+snakeCtx.arc(
+snakeFood.x+10,
+snakeFood.y+10,
+8,
+0,
+Math.PI*2
+);
+
+snakeCtx.fill();
+
+
+snake.forEach(
+(part,index)=>{
+
+snakeCtx.fillStyle=
+index===0
+?"#c084fc"
+:"#22c55e";
+
+
+snakeCtx.fillRect(
+part.x+2,
+part.y+2,
+16,
+16
+);
+
+}
+);
+
+}
+
+
+
+function snakeGameOver(){
+
+clearInterval(gameTimer);
+
+alert(
+"💀 Game Over!\n\nScore: "+
+snakeScore
+);
+
+loadSnake();
+
+}
+
+
+
+/* =====================================
+CLICKER
+===================================== */
+
+
+let clicks=0;
+
+
+function loadClicker(){
+
+document.getElementById(
+"gameTitle"
+).textContent=
+"🖱️ Crazy Clicker";
+
+
+clicks=0;
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=`
+
+<div class="clicker">
+
+<h2>
+Clicks:
+<span id="clicks">
+0
+</span>
+</h2>
+
+<br>
+
+<button
+class="click-button"
+onclick="clickButton()"
+>
+CLICK!
+</button>
+
+<p style="
+margin-top:20px;
+color:#9ca3af;
+">
+Click as fast as possible!
+</p>
+
+</div>
+
+`;
+
+}
+
+
+
+function clickButton(){
+
+if(paused)
+return;
+
+
+clicks++;
+
+
+document.getElementById(
+"clicks"
+).textContent=
+clicks;
+
+
+if(clicks>bestScore){
+
+bestScore=clicks;
+
+localStorage.setItem(
+"gvBest",
+bestScore
+);
+
+updateStats();
+
+}
+
+}
+
+
+
+/* =====================================
+MEMORY
+===================================== */
+
+
+let memoryCards=
+[
+"🍎","🍌","🍇","🍉",
+"🍎","🍌","🍇","🍉"
+];
+
+
+let firstCard=null;
+
+let secondCard=null;
+
+let lockCards=false;
+
+let matches=0;
+
+
+
+function loadMemory(){
+
+document.getElementById(
+"gameTitle"
+).textContent=
+"🧠 Memory Match";
+
+
+let shuffled=
+[...memoryCards]
+.sort(
+()=>Math.random()-.5
+);
+
+
+matches=0;
+
+firstCard=null;
+
+secondCard=null;
+
+lockCards=false;
+
+
+let html=
+'<div class="memory-grid">';
+
+
+shuffled.forEach(
+(value,index)=>{
+
+html+=`
+
+<button
+class="memory-card"
+id="memory${index}"
+onclick="memoryClick(
+${index},
+'${value}'
+)"
+>
+${value}
+</button>
+
+`;
+
+});
+
+
+html+=
+"</div>";
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=
+html;
+
+}
+
+
+
+function memoryClick(index,value){
+
+if(
+lockCards ||
+paused
+)
+return;
+
+
+let card=
+document.getElementById(
+"memory"+index
+);
+
+
+if(
+card.classList.contains("open")
+)
+return;
+
+
+card.classList.add("open");
+
+
+if(
+firstCard===null
+){
+
+firstCard={
+index,
+value
+};
+
+return;
+
+}
+
+
+secondCard={
+index,
+value
+};
+
+
+lockCards=true;
+
+
+if(
+firstCard.value===
+secondCard.value
+){
+
+matches++;
+
+firstCard=null;
+
+secondCard=null;
+
+lockCards=false;
+
+
+if(matches===4){
+
+alert(
+"🏆 You won Memory Match!"
+);
+
+}
+
+}
+
+else{
+
+setTimeout(
+()=>{
+
+document.getElementById(
+"memory"+firstCard.index
+).classList.remove(
+"open"
+);
+
+
+document.getElementById(
+"memory"+secondCard.index
+).classList.remove(
+"open"
+);
+
+
+firstCard=null;
+
+secondCard=null;
+
+lockCards=false;
+
+},
+700
+);
+
+}
+
+}
+
+
+
+/* =====================================
+DODGE
+===================================== */
+
+
+let dodgeCanvas;
+
+let dodgeCtx;
+
+let player;
+
+let enemies=[];
+
+let dodgeScore=0;
+
+
+
+function loadDodge(){
+
+document.getElementById(
+"gameTitle"
+).textContent=
+"☄️ Sky Dodge";
+
+
+document.getElementById(
+"gameArea"
+).innerHTML=`
+
+<p>
+Move with A/D or arrow keys
+</p>
+
+<br>
+
+<canvas
+id="dodgeCanvas"
+width="500"
+height="500"
+style="
+background:#090f20;
+border:2px solid #8b5cf6;
+max-width:90vw;
+"
+></canvas>
+
+<p style="margin-top:10px">
+Score:
+<b id="dodgeScore">
+0
+</b>
+</p>
+
+`;
+
+
+dodgeCanvas=
+document.getElementById(
+"dodgeCanvas"
+);
+
+dodgeCtx=
+dodgeCanvas.getContext("2d");
+
+
+player={
+x:230,
+y:440,
+width:40,
+height:40
+};
+
+
+enemies=[];
+
+dodgeScore=0;
+
+paused=false;
+
+
+clearInterval(gameTimer);
+
+gameTimer=
+setInterval(
+updateDodge,
+30
+);
+
+}
+
+
+
+document.onkeydown=
+function(event){
+
+if(
+currentGame===0
+){
+
+if(event.key==="ArrowUp")
+snakeMove("up");
+
+if(event.key==="ArrowDown")
+snakeMove("down");
+
+if(event.key==="ArrowLeft")
+snakeMove("left");
+
+if(event.key==="ArrowRight")
+snakeMove("right");
+
+}
+
+
+if(
+currentGame===3
+){
+
+if(
+event.key==="ArrowLeft" ||
+event.key==="a"
+)
+player.x-=25;
+
+
+if(
+event.key==="ArrowRight" ||
+event.key==="d"
+)
+player.x+=25;
+
+}
+
+};
+
+
+
+function updateDodge(){
+
+if(paused)
+return;
+
+
+dodgeCtx.fillStyle=
+"#080d1d";
+
+
+dodgeCtx.fillRect(
+0,
+0,
+500,
+500
+);
+
+
+if(
+Math.random()<.04
+){
+
+enemies.push({
+
+x:Math.random()*460,
+
+y:-30,
+
+size:30,
+
+speed:3+
+Math.random()*4
+
+});
+
+}
+
+
+dodgeCtx.fillStyle=
+"#38bdf8";
+
+
+dodgeCtx.fillRect(
+player.x,
+player.y,
+player.width,
+player.height
+);
+
+
+for(
+let i=enemies.length-1;
+i>=0;
+i--
+){
+
+let enemy=
+enemies[i];
+
+
+enemy.y+=
+enemy.speed;
+
+
+dodgeCtx.fillStyle=
+"#ef4444";
+
+
+dodgeCtx.fillRect(
+enemy.x,
+enemy.y,
+enemy.size,
+enemy.size
+);
+
+
+if(
+enemy.y>500
+){
+
+enemies.splice(
+i,
+1
+);
+
+dodgeScore++;
+
+
+document.getElementById(
+"dodgeScore"
+).textContent=
+dodgeScore;
+
+}
+
+
+if(
+
+player.x<
+enemy.x+enemy.size &&
+
+player.x+
+player.width>
+enemy.x &&
+
+player.y<
+enemy.y+enemy.size &&
+
+player.y+
+player.height>
+enemy.y
+
+){
+
+alert(
+"💥 You lost!\nScore: "+
+dodgeScore
+);
+
+loadDodge();
+
+}
+
+}
+
+}
+
+
+
+/* =====================================
+SEARCH
+===================================== */
+
+
+function searchGames(){
+
+filterGames();
+
+}
+
+
+
+/* =====================================
+FILTER
+===================================== */
+
+
+function filterGames(){
+
+let text=
+document.getElementById(
+"search"
+).value.toLowerCase();
+
+
+let category=
+document.getElementById(
+"category"
+).value;
+
+
+let cards=
+document.querySelectorAll(
+".game-card"
+);
+
+
+let count=0;
+
+
+cards.forEach(
+card=>{
+
+let name=
+card.dataset.name;
+
+let cat=
+card.dataset.category;
+
+
+let matchesText=
+name.includes(text);
+
+
+let matchesCategory=
+category==="all" ||
+cat===category;
+
+
+if(
+matchesText &&
+matchesCategory
+){
+
+card.style.display=
+"block";
+
+count++;
+
+}
+else{
+
+card.style.display=
+"none";
+
+}
+
+});
+
+
+document.getElementById(
+"gameCount"
+).textContent=
+count+
+" Games";
+
+}
+
+
+
+/* =====================================
+FAVORITE
+===================================== */
+
+
+function favorite(button){
+
+button.textContent=
+button.textContent==="♡"
+?"❤️"
+:"♡";
+
+}
+
+
+
+/* =====================================
+RANDOM GAME
+===================================== */
+
+
+function randomGame(){
+
+let index=
+Math.floor(
+Math.random()*100
+);
+
+joinGame(index);
+
+}
+
+
+
+/* =====================================
+SETTINGS
+===================================== */
+
+
+function openSettings(){
+
+document.getElementById(
+"settings"
+).style.display=
+document.getElementById(
+"settings"
+).style.display==="block"
+?"none"
+:"block";
+
+}
+
+
+
+function openProfile(){
+
+document.getElementById(
+"profile"
+).style.display=
+document.getElementById(
+"profile"
+).style.display==="block"
+?"none"
+:"block";
+
+document.getElementById(
+"profilePlayed"
+).textContent=
+gamesPlayed;
+
+document.getElementById(
+"profileBest"
+).textContent=
+bestScore;
+
+document.getElementById(
+"profileLevel"
+).textContent=
+Math.floor(
+gamesPlayed/5
+)+1;
+
+}
+
+
+
+function toggleTheme(){
+
+document.body.classList.toggle(
+"light"
+);
+
+}
+
+
+
+function toggleSound(){
+
+soundOn=!soundOn;
+
+alert(
+soundOn
+?"🔊 Sound ON"
+:"🔇 Sound OFF"
+);
+
+}
+
+
+
+/* =====================================
+STATS
+===================================== */
+
+
+function updateStats(){
+
+document.getElementById(
+"gamesPlayed"
+).textContent=
+gamesPlayed;
+
+
+document.getElementById(
+"bestScore"
+).textContent=
+bestScore;
+
+document.getElementById(
+"profileBest"
+).textContent=
+bestScore;
+
+document.getElementById(
+"profilePlayed"
+).textContent=
+gamesPlayed;
+
+
+document.getElementById(
+"level"
+).textContent=
+Math.floor(
+gamesPlayed/5
+)+1;
+
+}
+
+
+
+/* =====================================
+HOME
+===================================== */
+
+
+function goHome(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+updateStats();
+
+</script>
+
+</body>
+</html>
