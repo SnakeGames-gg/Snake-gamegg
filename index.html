@@ -2,2722 +2,1739 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GameVerse 100</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MiniVerse 100 Games</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-    font-family:Arial,sans-serif;
-    background:#070b18;
-    color:white;
-    transition:.3s;
+font-family:Arial,sans-serif;
+background:#10131c;
+color:white;
+min-height:100vh;
+transition:.3s;
 }
-
-button,
-input,
-select{
-    font:inherit;
+body.light{background:#eef1f7;color:#111}
+button,input{
+font:inherit;
 }
-
-button{
-    cursor:pointer;
-}
-
 header{
-    height:70px;
-    background:#0d1328;
-    border-bottom:1px solid #252d4d;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 4%;
-    position:sticky;
-    top:0;
-    z-index:100;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+background:#171b28;
+box-shadow:0 3px 15px #0005;
+position:sticky;
+top:0;
+z-index:10;
 }
-
+body.light header{background:white}
 .logo{
-    font-size:25px;
-    font-weight:bold;
+font-size:25px;
+font-weight:bold;
+color:#7c5cff;
 }
-
-.logo span{
-    color:#a855f7;
+.headerButtons{
+display:flex;
+gap:8px;
 }
-
-nav{
-    display:flex;
-    gap:25px;
+button{
+border:0;
+border-radius:10px;
+padding:10px 15px;
+cursor:pointer;
+background:#7c5cff;
+color:white;
+font-weight:bold;
 }
-
-nav a{
-    color:#ddd;
-    text-decoration:none;
-    cursor:pointer;
-}
-
-nav a:hover{
-    color:#c084fc;
-}
-
-.header-buttons{
-    display:flex;
-    gap:8px;
-}
-
-.header-btn{
-    background:#171e38;
-    color:white;
-    border:1px solid #30395f;
-    padding:9px 12px;
-    border-radius:9px;
-}
-
-.hero{
-    min-height:350px;
-    padding:70px 7%;
-    display:flex;
-    align-items:center;
-
-    background:
-    radial-gradient(
-        circle at 80% 40%,
-        #6d28d9,
-        transparent 30%
-    ),
-    linear-gradient(
-        135deg,
-        #080c1d,
-        #151d40
-    );
-}
-
-.hero h1{
-    font-size:58px;
-    margin-bottom:15px;
-}
-
-.hero h1 span{
-    color:#a855f7;
-}
-
-.hero p{
-    color:#aeb7d0;
-    font-size:19px;
-    max-width:650px;
-    margin-bottom:25px;
-}
-
-.main-button{
-    background:linear-gradient(
-        90deg,
-        #7c3aed,
-        #c026d3
-    );
-
-    color:white;
-    border:none;
-    padding:15px 25px;
-    border-radius:10px;
-}
-
+button:hover{transform:scale(1.04)}
 .container{
-    width:92%;
-    max-width:1400px;
-    margin:35px auto;
+max-width:1200px;
+margin:auto;
+padding:25px;
 }
-
-.search-area{
-    display:flex;
-    gap:12px;
-    margin-bottom:30px;
+.hero{
+text-align:center;
+padding:35px 10px;
 }
-
-#search{
-    flex:1;
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #30395f;
-    background:#11182e;
-    color:white;
-    outline:none;
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
 }
-
-#category{
-    padding:15px;
-    border-radius:10px;
-    background:#11182e;
-    color:white;
-    border:1px solid #30395f;
+.hero p{
+opacity:.7;
+font-size:18px;
 }
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
+.search{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:2px solid #333;
+background:#1a1f2d;
+color:white;
+margin:20px 0;
+outline:0;
 }
-
+body.light .search{
+background:white;
+color:#111;
+}
+.categories{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+.category{
+background:#242a3b;
+}
+.category.active{
+background:#7c5cff;
+}
 .games{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(220px,1fr));
-
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+gap:15px;
 }
-
-.game-card{
-    background:#10172d;
-    border:1px solid #293354;
-    border-radius:15px;
-    overflow:hidden;
-    transition:.25s;
+.card{
+background:#191e2c;
+border-radius:16px;
+padding:18px;
+cursor:pointer;
+border:1px solid #ffffff12;
+transition:.2s;
 }
-
-.game-card:hover{
-    transform:translateY(-7px);
-    border-color:#a855f7;
-    box-shadow:
-    0 15px 40px #0008;
+body.light .card{background:white}
+.card:hover{
+transform:translateY(-5px);
+border-color:#7c5cff;
 }
-
-.game-image{
-    height:140px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:60px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #172554,
-        #581c87
-    );
+.icon{
+font-size:42px;
+margin-bottom:12px;
 }
-
-.game-info{
-    padding:16px;
+.card h3{margin-bottom:7px}
+.card p{
+font-size:13px;
+opacity:.6;
 }
-
-.game-info h3{
-    margin-bottom:7px;
-}
-
-.game-info p{
-    color:#929bb8;
-    font-size:13px;
-    margin-bottom:12px;
-}
-
-.online{
-    color:#4ade80;
-}
-
-.game-buttons{
-    display:flex;
-    gap:7px;
-}
-
-.join{
-    flex:1;
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    background:#7c3aed;
-    color:white;
-}
-
-.favorite{
-    width:42px;
-    border:none;
-    border-radius:8px;
-    background:#1b2442;
-    color:white;
-    font-size:18px;
-}
-
-.stats{
-    margin-top:40px;
-
-    display:grid;
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:15px;
-}
-
-.stat{
-    background:#10172d;
-    border:1px solid #293354;
-    border-radius:14px;
-    padding:22px;
-    text-align:center;
-}
-
-.stat h2{
-    color:#c084fc;
-    font-size:30px;
-}
-
-.stat p{
-    color:#8893b0;
-    margin-top:5px;
-}
-
-footer{
-    text-align:center;
-    color:#69738f;
-    padding:50px;
-}
-
-
-/* PROFILE */
-
-#profile{
-    display:none;
-
-    position:fixed;
-    top:78px;
-    right:20px;
-
-    width:280px;
-
-    background:#11182e;
-    border:1px solid #39436c;
-
-    border-radius:15px;
-
-    padding:20px;
-
-    z-index:200;
-}
-
-.avatar{
-    font-size:60px;
-    text-align:center;
-}
-
-
-/* SETTINGS */
-
-#settings{
-    display:none;
-
-    position:fixed;
-    top:78px;
-    right:20px;
-
-    width:280px;
-
-    background:#11182e;
-    border:1px solid #39436c;
-
-    border-radius:15px;
-
-    padding:20px;
-
-    z-index:200;
-}
-
-.setting{
-    display:flex;
-    justify-content:space-between;
-    margin:20px 0;
-}
-
-
-/* GAME SCREEN */
-
 #gameScreen{
-    display:none;
-
-    position:fixed;
-    inset:0;
-
-    background:#050816;
-
-    z-index:500;
+display:none;
+position:fixed;
+inset:0;
+background:#0c0f16;
+z-index:50;
+overflow:auto;
 }
-
-.game-header{
-    height:65px;
-
-    background:#0d1328;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 25px;
-
-    border-bottom:1px solid #293354;
+.gameTop{
+height:65px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+background:#171b28;
+position:sticky;
+top:0;
+z-index:5;
 }
-
-.game-header-buttons{
-    display:flex;
-    gap:8px;
+.gameArea{
+max-width:900px;
+margin:auto;
+padding:25px;
+text-align:center;
 }
-
-.game-header button{
-    padding:9px 13px;
-    border:none;
-    border-radius:8px;
-    color:white;
+.gameArea h1{
+margin:10px 0;
+font-size:34px;
 }
-
-.restart{
-    background:#7c3aed;
+.gameBox{
+min-height:420px;
+background:#151a27;
+border:1px solid #ffffff12;
+border-radius:20px;
+padding:25px;
+position:relative;
+overflow:hidden;
 }
-
-.pause{
-    background:#eab308;
+.stat{
+font-size:20px;
+margin:10px;
+color:#bdb5ff;
 }
-
-.leave{
-    background:#ef4444;
+.playBtn{
+margin:8px;
 }
-
-#gameArea{
-    height:
-    calc(100vh - 65px);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    flex-direction:column;
+.target{
+position:absolute;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#ff4757;
+cursor:pointer;
 }
-
-
-/* SNAKE */
-
-#snakeCanvas{
-    width:500px;
-    max-width:90vw;
-
-    background:#050b15;
-
-    border:3px solid #8b5cf6;
-
-    border-radius:10px;
+.bigNumber{
+font-size:80px;
+font-weight:bold;
+margin:30px;
 }
-
-.score{
-    font-size:20px;
-    margin:15px;
+.choiceGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+max-width:500px;
+margin:25px auto;
 }
-
-.controls{
-    text-align:center;
-    margin-top:15px;
+.choiceGrid button{
+min-height:70px;
 }
-
-.controls button{
-    width:50px;
-    height:40px;
-
-    margin:3px;
-
-    border:none;
-    border-radius:8px;
-
-    background:#7c3aed;
-    color:white;
+.memoryGrid{
+display:grid;
+grid-template-columns:repeat(4,70px);
+gap:10px;
+justify-content:center;
+margin:20px;
 }
-
-
-/* CLICKER */
-
-.clicker{
-    text-align:center;
+.memoryCard{
+height:70px;
+font-size:28px;
+background:#292f42;
 }
-
-.click-button{
-    width:220px;
-    height:220px;
-
-    border-radius:50%;
-
-    background:
-    linear-gradient(
-        135deg,
-        #7c3aed,
-        #ec4899
-    );
-
-    color:white;
-
-    font-size:30px;
-
-    border:none;
-
-    box-shadow:
-    0 0 50px #8b5cf655;
+canvas{
+background:#080b10;
+border-radius:15px;
+max-width:100%;
 }
-
-.click-button:active{
-    transform:scale(.94);
+.range{
+width:80%;
 }
-
-
-/* MEMORY */
-
-.memory-grid{
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,80px);
-
-    gap:10px;
+footer{
+text-align:center;
+padding:40px;
+opacity:.5;
 }
-
-.memory-card{
-    width:80px;
-    height:80px;
-
-    background:#252f55;
-
-    color:transparent;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-size:35px;
+@media(max-width:600px){
+.hero h1{font-size:35px}
+.games{grid-template-columns:repeat(2,1fr)}
+.card{padding:12px}
+.gameArea{padding:10px}
 }
-
-.memory-card.open{
-    color:white;
-    background:#7c3aed;
-}
-
-
-/* LIGHT MODE */
-
-.light{
-    background:#f1f5f9;
-    color:#111827;
-}
-
-.light header,
-.light .game-card,
-.light .stat,
-.light #search,
-.light #category,
-.light #settings,
-.light #profile{
-    background:white;
-    color:#111827;
-}
-
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-    nav{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:40px;
-    }
-
-    .search-area{
-        flex-direction:column;
-    }
-
-    .stats{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
 <header>
-
-<div class="logo">
-🎮 Game<span>Verse</span>
+<div class="logo">🎮 MiniVerse</div>
+<div class="headerButtons">
+<button onclick="toggleTheme()">🌙</button>
+<button onclick="toggleSound()">🔊</button>
 </div>
-
-
-<nav>
-
-<a onclick="goHome()">
-Home
-</a>
-
-<a href="#games">
-Games
-</a>
-
-<a href="#stats">
-Stats
-</a>
-
-<a onclick="openProfile()">
-Profile
-</a>
-
-</nav>
-
-
-<div class="header-buttons">
-
-<button
-class="header-btn"
-onclick="toggleSound()"
->
-🔊
-</button>
-
-<button
-class="header-btn"
-onclick="openProfile()"
->
-👤
-</button>
-
-<button
-class="header-btn"
-onclick="openSettings()"
->
-⚙️
-</button>
-
-</div>
-
 </header>
 
-
-
-<!-- PROFILE -->
-
-<div id="profile">
-
-<div class="avatar">
-😎
-</div>
-
-<h2 style="text-align:center">
-Player
-</h2>
-
-<br>
-
-<p>
-🎮 Games Played:
-<b id="profilePlayed">0</b>
-</p>
-
-<br>
-
-<p>
-🏆 Best Score:
-<b id="profileBest">0</b>
-</p>
-
-<br>
-
-<p>
-⭐ Level:
-<b id="profileLevel">1</b>
-</p>
-
-</div>
-
-
-
-<!-- SETTINGS -->
-
-<div id="settings">
-
-<h3>
-⚙️ Settings
-</h3>
-
-<div class="setting">
-
-<span>
-Dark Mode
-</span>
-
-<button
-onclick="toggleTheme()"
->
-🌙
-</button>
-
-</div>
-
-
-<div class="setting">
-
-<span>
-Sound
-</span>
-
-<button
-onclick="toggleSound()"
->
-🔊
-</button>
-
-</div>
-
-</div>
-
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div>
-
-<h1>
-Play.
-<span>Fun.</span>
-Win! 🎮
-</h1>
-
-<p>
-Welcome to GameVerse — a mini gaming platform
-with 100 games. Search, join games, compete
-for high scores and have fun!
-</p>
-
-<button
-class="main-button"
-onclick="randomGame()"
->
-🎲 PLAY RANDOM GAME
-</button>
-
-</div>
-
-</section>
-
-
-
+<main id="home">
 <div class="container">
 
+<section class="hero">
+<h1>🎮 MiniVerse</h1>
+<p>100 playable mini-games in one website!</p>
+</section>
 
-<!-- SEARCH -->
+<input id="search" class="search"
+placeholder="🔎 Search games..."
+oninput="renderGames()">
 
-<div class="search-area">
-
-<input
-id="search"
-placeholder="🔎 Search 100 games..."
-onkeyup="searchGames()"
->
-
-
-<select
-id="category"
-onchange="filterGames()"
->
-
-<option value="all">
-All Categories
-</option>
-
-<option value="Arcade">
-Arcade
-</option>
-
-<option value="Action">
-Action
-</option>
-
-<option value="Puzzle">
-Puzzle
-</option>
-
-<option value="Racing">
-Racing
-</option>
-
-<option value="Sports">
-Sports
-</option>
-
-<option value="Adventure">
-Adventure
-</option>
-
-<option value="Strategy">
-Strategy
-</option>
-
-</select>
-
+<div class="categories">
+<button class="category active" onclick="setCategory('All',this)">All</button>
+<button class="category" onclick="setCategory('Action',this)">Action</button>
+<button class="category" onclick="setCategory('Puzzle',this)">Puzzle</button>
+<button class="category" onclick="setCategory('Arcade',this)">Arcade</button>
+<button class="category" onclick="setCategory('Speed',this)">Speed</button>
 </div>
 
-
-
-<div
-class="section-title"
-id="games"
->
-
-<h2>
-🔥 All Games
-</h2>
-
-<span id="gameCount">
-100 Games
-</span>
+<div id="games" class="games"></div>
 
 </div>
-
-
-
-<!-- GAME LIST -->
-
-<div
-class="games"
-id="gameList"
->
-</div>
-
-
-
-<!-- STATS -->
-
-<div
-class="stats"
-id="stats"
->
-
-<div class="stat">
-
-<h2 id="gamesPlayed">
-0
-</h2>
-
-<p>
-Games Played
-</p>
-
-</div>
-
-
-<div class="stat">
-
-<h2 id="bestScore">
-0
-</h2>
-
-<p>
-Best Score
-</p>
-
-</div>
-
-
-<div class="stat">
-
-<h2 id="level">
-1
-</h2>
-
-<p>
-Player Level
-</p>
-
-</div>
-
-
-<div class="stat">
-
-<h2>
-100
-</h2>
-
-<p>
-Games Available
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<footer>
-
-🎮 GameVerse © 2026
-
-<br><br>
-
-100 Games • Play • Compete • Have Fun
-
-</footer>
-
-
-
-<!-- GAME SCREEN -->
+<footer>MiniVerse • 100 Mini Games 🎮</footer>
+</main>
 
 <div id="gameScreen">
 
+<div class="gameTop">
+<b id="gameTitle">Game</b>
+<div>
+<span id="gameScore">Score: 0</span>
+<button onclick="leaveGame()">🏠 Leave Game</button>
+</div>
+</div>
 
-<div class="game-header">
-
-<h2 id="gameTitle">
-Game
-</h2>
-
-
-<div class="game-header-buttons">
-
-<button
-class="restart"
-onclick="restartGame()"
->
-🔄 Restart
-</button>
-
-<button
-class="pause"
-onclick="pauseGame()"
->
-⏸ Pause
-</button>
-
-<button
-class="leave"
-onclick="leaveGame()"
->
-🚪 Leave Game
-</button>
-
+<div class="gameArea">
+<div id="gameDescription"></div>
+<div id="gameBox" class="gameBox"></div>
 </div>
 
 </div>
-
-
-<div id="gameArea">
-</div>
-
-
-</div>
-
-
 
 <script>
 
+/* =========================
+   GAME DATABASE
+========================= */
 
-/* =====================================
-100 GAME DATABASE
-===================================== */
-
-
-const gameNames=[
-
-"Snake Rush",
-"Crazy Clicker",
-"Memory Match",
-"Sky Dodge",
-"Space Shooter",
-"Car Drift",
-"Ninja Run",
-"Pixel Jump",
-"Color Match",
-"Basket Hoop",
-
-"Zombie Escape",
-"Alien Attack",
-"Dragon Fight",
-"Robot Battle",
-"Monster Run",
-"Rocket Race",
-"Football Star",
-"Chess Master",
-"Checkers",
-"Tic Tac Toe",
-
-"Connect Four",
-"Minesweeper",
-"Sudoku",
-"Tower Defense",
-"Dungeon Quest",
-"Pirate Adventure",
-"Treasure Hunt",
-"Jungle Run",
-"City Driver",
-"Bike Racing",
-
-"Snowboard Rush",
-"Desert Race",
-"Ocean Adventure",
-"Island Survival",
-"Castle Defense",
-"Knight Battle",
-"Magic Quest",
-"Wizard Duel",
-"Samurai Fight",
-"Ninja Battle",
-
-"Space Race",
-"Moon Landing",
-"Mars Explorer",
-"Galaxy War",
-"Star Defender",
-"Asteroid Blast",
-"UFO Escape",
-"Rocket Defender",
-"Planet Runner",
-"Cosmic Jump",
-
-"Fire Jump",
-"Ice Runner",
-"Lava Escape",
-"Water Slide",
-"Sky Runner",
-"Cloud Jump",
-"Rainbow Rush",
-"Lightning Dash",
-"Speed Runner",
-"Endless Road",
-
-"Drift King",
-"Street Racer",
-"Formula Speed",
-"Motorbike Pro",
-"Truck Driver",
-"Police Chase",
-"Taxi Driver",
-"Traffic Escape",
-"Highway Racer",
-"Rally Master",
-
-"Basket Master",
-"Penalty King",
-"Goal Champion",
-"Tennis Star",
-"Golf Master",
-"Bowling Pro",
-"Boxing Hero",
-"Wrestling Clash",
-"Skate Master",
-"Surf Rider",
-
-"Word Master",
-"Math Challenge",
-"Brain Trainer",
-"Puzzle Box",
-"2048",
-"Block Puzzle",
-"Jigsaw World",
-"Find The Odd",
-"Reaction Test",
-"Memory Rush",
-
-"Viking Quest",
-"Super Hero",
-"Monster Hunter",
-"Ghost Escape",
-"Haunted House",
-"Secret Agent",
-"Spy Mission",
-"Army Commander",
-"Battle Arena",
-"Ultimate Adventure"
-
+const icons=[
+"🎯","🐍","🧠","🚀","🏃","🧱","⚽","🏎️","👾","🪙",
+"🍎","🔥","❄️","🦖","🐸","🐔","🦊","🐼","🦄","🐙",
+"🌟","💎","🍔","🍕","🍩","🎈","🎲","🧩","🚁","🚗",
+"🚕","🚓","🚑","🚒","✈️","🚢","🏀","🏈","⚾","🎾",
+"🥊","🏹","⚔️","🛸","🌍","🌋","🌊","🌲","🏰","👑",
+"💣","🔮","🧪","🔑","🚪","👻","🧟","🤖","🧙","🐲",
+"☀️","🌙","⭐","🌈","⚡","🌪️","☁️","🌧️","🌵","🌴",
+"🎸","🥁","🎹","🎤","🎨","📚","💡","🔢","🔤","❤️",
+"💜","💙","💚","💛","🧡","🩷","🖤","🤍","😎","😂",
+"🤯","😈","🥶","🥵","🤠","🥳","🏆","🎁","🎯","🏆"
 ];
 
-
-const emojis=[
-
-"🐍","🖱️","🧠","☄️","🚀",
-"🏎️","🥷","🕹️","🎨","🏀",
-"🧟","👽","🐉","🤖","👹",
-"🚀","⚽","♟️","🔴","❌",
-"🟡","💣","🔢","🏰","⚔️",
-"🏴‍☠️","💎","🌴","🚕","🏍️",
-"🏂","🏜️","🌊","🏝️","🏯",
-"🛡️","🧙","✨","⚔️","🥷",
-"🌌","🌙","🔴","⭐","🌠",
-"☄️","🛸","🚀","🪐","🌌",
-"🔥","❄️","🌋","💦","☁️",
-"🌈","⚡","🏃","🛣️",
-"🏎️","🏁","🏎️","🏍️","🚚",
-"🚓","🚕","🚦","🛣️","🏆",
-"🏀","⚽","🥅","🎾","⛳",
-"🎳","🥊","🤼","🛹","🏄",
-"🔤","➗","🧠","🧩","🔢",
-"🧱","🧩","🔍","⚡","🧠",
-"⚔️","🦸","👹","👻","🏚️",
-"🕵️","🕵️","🪖","⚔️","🏆"
-
+const names=[
+"Target Tap","Snake Rush","Number Guess","Rocket Dodge","Speed Runner",
+"Block Smash","Penalty Kick","Mini Racer","Alien Attack","Coin Grab",
+"Apple Catch","Fire Dodge","Ice Jump","Dino Run","Frog Jump",
+"Chicken Escape","Fox Hunt","Panda Catch","Unicorn Dash","Octopus Attack",
+"Star Catcher","Diamond Hunt","Burger Catch","Pizza Maker","Donut Catch",
+"Balloon Pop","Dice Roll","Puzzle Match","Helicopter","Car Dodge",
+"Taxi Driver","Police Chase","Ambulance Rush","Fire Rescue","Sky Pilot",
+"Basketball Shot","Football Kick","Baseball Hit","Tennis Tap","Boxing Punch",
+"Archery","Sword Fight","Space Battle","Planet Defender","Volcano Escape",
+"Ocean Runner","Forest Escape","Castle Defense","Kingdom Rush","Bomb Avoid",
+"Magic Orb","Potion Mix","Key Finder","Door Escape","Ghost Hunter",
+"Zombie Attack","Robot Battle","Wizard Duel","Dragon Fire","Sun Catch",
+"Moon Jump","Star Dodger","Rainbow Catch","Lightning Tap","Tornado Escape",
+"Cloud Jump","Rain Dodge","Cactus Runner","Palm Escape","Guitar Hero",
+"Drum Tap","Piano Keys","Music Memory","Color Painter","Book Quiz",
+"Light Bulb","Math Master","Word Master","Heart Catch","Purple Dodge",
+"Blue Ball","Green Catch","Yellow Rush","Orange Jump","Pink Pop",
+"Black Hole","White Star","Cool Dude","Funny Face","Crazy Mode",
+"Evil Dodge","Ice Challenge","Hot Challenge","Cowboy Shooter","Party Pop",
+"Ultimate Target","Prize Grab","Champion"
 ];
 
+let games=[];
 
-const categories=[
+for(let i=0;i<100;i++){
+games.push({
+id:i+1,
+name:names[i],
+icon:icons[i],
+category:["Action","Puzzle","Arcade","Speed"][i%4]
+});
+}
 
-"Arcade",
-"Arcade",
-"Puzzle",
-"Action",
-"Action",
-"Racing",
-"Action",
-"Arcade",
-"Puzzle",
-"Sports",
-
-"Action",
-"Action",
-"Action",
-"Action",
-"Action",
-"Racing",
-"Sports",
-"Strategy",
-"Strategy",
-"Puzzle",
-
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Strategy",
-"Adventure",
-"Adventure",
-"Adventure",
-"Adventure",
-"Racing",
-"Racing",
-
-"Racing",
-"Racing",
-"Adventure",
-"Adventure",
-"Strategy",
-"Action",
-"Adventure",
-"Action",
-"Action",
-"Action",
-
-"Racing",
-"Adventure",
-"Adventure",
-"Action",
-"Action",
-"Action",
-"Action",
-"Action",
-"Adventure",
-"Arcade",
-
-"Arcade",
-"Arcade",
-"Action",
-"Action",
-"Arcade",
-"Arcade",
-"Arcade",
-"Action",
-"Arcade",
-"Arcade",
-
-"Racing",
-"Racing",
-"Racing",
-"Racing",
-"Racing",
-"Action",
-"Racing",
-"Racing",
-"Racing",
-"Racing",
-
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-"Sports",
-
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-"Puzzle",
-
-"Adventure",
-"Action",
-"Action",
-"Action",
-"Adventure",
-"Action",
-"Action",
-"Strategy",
-"Action",
-"Adventure"
-
-];
-
-
-
-/* =====================================
-STATE
-===================================== */
-
-
-let soundOn=true;
-
+let category="All";
+let sound=true;
 let currentGame=null;
+let score=0;
+let timer=null;
 
-let paused=false;
+/* =========================
+   MENU
+========================= */
 
-let gameTimer=null;
+function renderGames(){
 
-let gamesPlayed=
-Number(
-localStorage.getItem("gvGames")||0
-);
+const box=document.getElementById("games");
+const search=document.getElementById("search").value.toLowerCase();
 
-let bestScore=
-Number(
-localStorage.getItem("gvBest")||0
-);
+box.innerHTML="";
 
+games
+.filter(g=>category==="All"||g.category===category)
+.filter(g=>g.name.toLowerCase().includes(search))
+.forEach(g=>{
 
-
-/* =====================================
-CREATE 100 CARDS
-===================================== */
-
-
-function createGames(){
-
-const list=
-document.getElementById(
-"gameList"
-);
-
-list.innerHTML="";
-
-
-gameNames.forEach(
-(name,index)=>{
-
-let players=
-Math.floor(
-Math.random()*9000
-)+100;
-
-
-let card=
-document.createElement(
-"div"
-);
-
-card.className="game-card";
-
-card.dataset.category=
-categories[index];
-
-card.dataset.name=
-name.toLowerCase();
-
+const card=document.createElement("div");
+card.className="card";
 
 card.innerHTML=`
-
-<div class="game-image">
-${emojis[index]}
-</div>
-
-<div class="game-info">
-
-<h3>
-${name}
-</h3>
-
-<p>
-${categories[index]}
-•
-<span class="online">
-● ${players} playing
-</span>
-</p>
-
-<div class="game-buttons">
-
-<button
-class="join"
-onclick="joinGame(${index})"
->
-▶ JOIN GAME
-</button>
-
-<button
-class="favorite"
-onclick="favorite(this)"
->
-♡
-</button>
-
-</div>
-
-</div>
-
+<div class="icon">${g.icon}</div>
+<h3>${g.id}. ${g.name}</h3>
+<p>${g.category} • Play now ▶</p>
 `;
 
-list.appendChild(card);
+card.onclick=()=>startGame(g.id);
+
+box.appendChild(card);
 
 });
 
 }
 
+function setCategory(c,el){
+category=c;
+document.querySelectorAll(".category").forEach(x=>x.classList.remove("active"));
+el.classList.add("active");
+renderGames();
+}
 
-createGames();
+renderGames();
 
+/* =========================
+   SOUND
+========================= */
 
+const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
 
-/* =====================================
-JOIN GAME
-===================================== */
+function beep(freq=500,duration=.08){
 
+if(!sound)return;
 
-function joinGame(index){
+try{
+const osc=audioCtx.createOscillator();
+const gain=audioCtx.createGain();
 
-currentGame=index;
+osc.frequency.value=freq;
+osc.connect(gain);
+gain.connect(audioCtx.destination);
 
-gamesPlayed++;
+gain.gain.value=.05;
 
-localStorage.setItem(
-"gvGames",
-gamesPlayed
-);
-
-document.getElementById(
-"gamesPlayed"
-).textContent=
-gamesPlayed;
-
-
-document.getElementById(
-"profilePlayed"
-).textContent=
-gamesPlayed;
-
-
-document.getElementById(
-"gameScreen"
-).style.display=
-"block";
-
-
-document.getElementById(
-"gameTitle"
-).textContent=
-"Connecting...";
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=`
-
-<h2>
-🎮 Joining ${gameNames[index]}...
-</h2>
-
-<p style="margin-top:10px;color:#9ca3af">
-Finding game server...
-</p>
-
-`;
-
-
-setTimeout(
-()=>{
-
-/*
-The first 4 games are playable.
-The other 96 have a game lobby.
-*/
-
-if(index===0)
-loadSnake();
-
-else if(index===1)
-loadClicker();
-
-else if(index===2)
-loadMemory();
-
-else if(index===3)
-loadDodge();
-
-else
-loadLobby(index);
-
-},
-700
-);
+osc.start();
+osc.stop(audioCtx.currentTime+duration);
+}catch(e){}
 
 }
 
-
-
-/* =====================================
-LOBBY FOR OTHER GAMES
-===================================== */
-
-
-function loadLobby(index){
-
-document.getElementById(
-"gameTitle"
-).textContent=
-emojis[index]+" "+
-gameNames[index];
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=`
-
-<div style="text-align:center">
-
-<div style="font-size:80px">
-${emojis[index]}
-</div>
-
-<h1 style="margin:15px">
-${gameNames[index]}
-</h1>
-
-<p style="color:#9ca3af">
-${categories[index]} Game
-</p>
-
-<br>
-
-<div style="
-background:#10172d;
-padding:25px;
-border-radius:15px;
-max-width:450px;
-">
-
-<h2>
-🟢 Game Server Ready
-</h2>
-
-<p style="
-color:#9ca3af;
-margin:15px;
-">
-You joined the game!
-</p>
-
-<button
-class="main-button"
-onclick="fakePlay(${index})"
->
-🎮 START GAME
-</button>
-
-</div>
-
-</div>
-
-`;
-
+function toggleSound(){
+sound=!sound;
+document.querySelector(".headerButtons button:nth-child(2)").textContent=
+sound?"🔊":"🔇";
 }
 
-
-
-function fakePlay(index){
-
-alert(
-"🎮 You are playing "+
-gameNames[index]+
-"!\n\nThis game is ready to be added as a full playable mini-game."
-);
-
+function toggleTheme(){
+document.body.classList.toggle("light");
 }
 
+/* =========================
+   GAME SYSTEM
+========================= */
 
+function startGame(id){
 
-/* =====================================
-LEAVE GAME
-===================================== */
+clearInterval(timer);
 
+currentGame=id;
+score=0;
+
+document.getElementById("home").style.display="none";
+document.getElementById("gameScreen").style.display="block";
+
+document.getElementById("gameTitle").textContent=
+games[id-1].icon+" "+games[id-1].name;
+
+document.getElementById("gameScore").textContent="Score: 0";
+
+loadGame(id);
+}
 
 function leaveGame(){
 
-clearInterval(gameTimer);
+clearInterval(timer);
 
-currentGame=null;
+document.getElementById("gameScreen").style.display="none";
+document.getElementById("home").style.display="block";
 
-document.getElementById(
-"gameScreen"
-).style.display=
-"none";
+renderGames();
+}
 
-paused=false;
+function addScore(n=1){
+
+score+=n;
+
+document.getElementById("gameScore").textContent=
+"Score: "+score;
+
+beep(600,.06);
+}
+
+function box(){
+return document.getElementById("gameBox");
+}
+
+function title(t){
+document.getElementById("gameDescription").textContent=t;
+}
+
+/* =========================
+   100 GAME ROUTER
+========================= */
+
+function loadGame(id){
+
+const b=box();
+b.innerHTML="";
+
+title("Game "+id+" • Have fun!");
+
+/*
+Many games use reusable mini-game mechanics.
+Every game has its own title, icon and challenge.
+*/
+
+if(id===1) targetGame();
+else if(id===2) snakeGame();
+else if(id===3) numberGame();
+else if(id===4) dodgeGame();
+else if(id===5) speedGame();
+else if(id===6) smashGame();
+else if(id===7) penaltyGame();
+else if(id===8) racerGame();
+else if(id===9) alienGame();
+else if(id===10) coinGame();
+else if(id===11) catchGame("🍎");
+else if(id===12) dodgeGame("🔥");
+else if(id===13) jumpGame("❄️");
+else if(id===14) clickGame("🦖");
+else if(id===15) jumpGame("🐸");
+else if(id===16) dodgeGame("🐔");
+else if(id===17) clickGame("🦊");
+else if(id===18) catchGame("🐼");
+else if(id===19) speedGame("🦄");
+else if(id===20) clickGame("🐙");
+else if(id===21) catchGame("⭐");
+else if(id===22) catchGame("💎");
+else if(id===23) catchGame("🍔");
+else if(id===24) clickGame("🍕");
+else if(id===25) catchGame("🍩");
+else if(id===26) clickGame("🎈");
+else if(id===27) diceGame();
+else if(id===28) memoryGame();
+else if(id===29) dodgeGame("🚁");
+else if(id===30) dodgeGame("🚗");
+else if(id===31) dodgeGame("🚕");
+else if(id===32) dodgeGame("🚓");
+else if(id===33) speedGame("🚑");
+else if(id===34) clickGame("🚒");
+else if(id===35) dodgeGame("✈️");
+else if(id===36) basketballGame();
+else if(id===37) penaltyGame("🏈");
+else if(id===38) clickGame("⚾");
+else if(id===39) clickGame("🎾");
+else if(id===40) punchGame();
+else if(id===41) archeryGame();
+else if(id===42) swordGame();
+else if(id===43) spaceGame();
+else if(id===44) dodgeGame("🌍");
+else if(id===45) dodgeGame("🌋");
+else if(id===46) catchGame("🌊");
+else if(id===47) jumpGame("🌲");
+else if(id===48) smashGame("🏰");
+else if(id===49) smashGame("👑");
+else if(id===50) bombGame();
+else if(id===51) catchGame("🔮");
+else if(id===52) potionGame();
+else if(id===53) findGame("🔑");
+else if(id===54) findGame("🚪");
+else if(id===55) clickGame("👻");
+else if(id===56) clickGame("🧟");
+else if(id===57) clickGame("🤖");
+else if(id===58) clickGame("🧙");
+else if(id===59) dodgeGame("🐲");
+else if(id===60) catchGame("☀️");
+else if(id===61) jumpGame("🌙");
+else if(id===62) dodgeGame("⭐");
+else if(id===63) catchGame("🌈");
+else if(id===64) clickGame("⚡");
+else if(id===65) dodgeGame("🌪️");
+else if(id===66) jumpGame("☁️");
+else if(id===67) dodgeGame("🌧️");
+else if(id===68) jumpGame("🌵");
+else if(id===69) jumpGame("🌴");
+else if(id===70) rhythmGame();
+else if(id===71) rhythmGame();
+else if(id===72) pianoGame();
+else if(id===73) memoryGame();
+else if(id===74) colorGame();
+else if(id===75) quizGame();
+else if(id===76) mathGame();
+else if(id===77) wordGame();
+else if(id===78) clickGame("❤️");
+else if(id===79) dodgeGame("💜");
+else if(id===80) dodgeGame("💙");
+else if(id===81) catchGame("💚");
+else if(id===82) speedGame("💛");
+else if(id===83) jumpGame("🧡");
+else if(id===84) dodgeGame("🩷");
+else if(id===85) dodgeGame("🖤");
+else if(id===86) catchGame("🤍");
+else if(id===87) clickGame("😎");
+else if(id===88) clickGame("😂");
+else if(id===89) clickGame("🤯");
+else if(id===90) dodgeGame("😈");
+else if(id===91) jumpGame("🥶");
+else if(id===92) jumpGame("🥵");
+else if(id===93) targetGame("🤠");
+else if(id===94) clickGame("🥳");
+else if(id===95) targetGame("🏆");
+else if(id===96) catchGame("🎁");
+else if(id===97) targetGame("🎯");
+else if(id===98) prizeGame();
+else if(id===99) ultimateGame();
+else if(id===100) championGame();
 
 }
 
+/* =========================
+   GAME 1
+========================= */
 
+function targetGame(icon="🎯"){
 
-/* =====================================
-RESTART
-===================================== */
+title("Click the target as many times as possible!");
 
-
-function restartGame(){
-
-if(currentGame!==null){
-
-joinGame(currentGame);
-
-}
-
-}
-
-
-
-/* =====================================
-PAUSE
-===================================== */
-
-
-function pauseGame(){
-
-paused=!paused;
-
-}
-
-
-
-/* =====================================
-SNAKE
-===================================== */
-
-
-let snake=[];
-
-let snakeFood={};
-
-let snakeDirectionValue=
-"right";
-
-let nextDirection=
-"right";
-
-let snakeScore=0;
-
-let snakeCanvas;
-
-let snakeCtx;
-
-
-function loadSnake(){
-
-document.getElementById(
-"gameTitle"
-).textContent=
-"🐍 Snake Rush";
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=`
-
-<div class="score">
-Score:
-<b id="snakeScore">0</b>
-</div>
-
-<canvas
-id="snakeCanvas"
-width="500"
-height="500"
-></canvas>
-
-<div class="controls">
-
-<button onclick="snakeMove('up')">
-⬆️
-</button>
-
-<br>
-
-<button onclick="snakeMove('left')">
-⬅️
-</button>
-
-<button onclick="snakeMove('down')">
-⬇️
-</button>
-
-<button onclick="snakeMove('right')">
-➡️
-</button>
-
-</div>
-
+box().innerHTML=`
+<div class="stat">Time: <span id="time">15</span></div>
+<div class="target" id="target">${icon}</div>
 `;
 
+let time=15;
 
-snakeCanvas=
-document.getElementById(
-"snakeCanvas"
-);
+function move(){
 
-snakeCtx=
-snakeCanvas.getContext("2d");
+const t=document.getElementById("target");
 
-
-snake=[
-{x:240,y:240},
-{x:220,y:240},
-{x:200,y:240}
-];
-
-
-snakeDirectionValue="right";
-
-nextDirection="right";
-
-snakeScore=0;
-
-paused=false;
-
-createFood();
-
-
-clearInterval(gameTimer);
-
-gameTimer=
-setInterval(
-updateSnake,
-110
-);
-
-drawSnake();
-
+t.style.left=Math.random()*80+"%";
+t.style.top=80+Math.random()*250+"px";
 }
 
-
-
-function createFood(){
-
-snakeFood={
-x:Math.floor(
-Math.random()*25
-)*20,
-
-y:Math.floor(
-Math.random()*25
-)*20
+document.getElementById("target").onclick=()=>{
+addScore();
+move();
 };
 
+timer=setInterval(()=>{
+time--;
+document.getElementById("time").textContent=time;
+
+if(time<=0){
+clearInterval(timer);
+alert("Game Over! Score: "+score);
+}
+},1000);
+
+move();
 }
 
+/* =========================
+   CLICK GAME
+========================= */
 
+function clickGame(icon){
 
-function snakeMove(direction){
+title("Click the object 20 times!");
 
-if(
-direction==="up" &&
-snakeDirectionValue!=="down"
-)
-nextDirection="up";
-
-
-if(
-direction==="down" &&
-snakeDirectionValue!=="up"
-)
-nextDirection="down";
-
-
-if(
-direction==="left" &&
-snakeDirectionValue!=="right"
-)
-nextDirection="left";
-
-
-if(
-direction==="right" &&
-snakeDirectionValue!=="left"
-)
-nextDirection="right";
-
-}
-
-
-
-function updateSnake(){
-
-if(paused)
-return;
-
-
-snakeDirectionValue=
-nextDirection;
-
-
-let head={
-x:snake[0].x,
-y:snake[0].y
-};
-
-
-if(
-snakeDirectionValue==="up"
-)
-head.y-=20;
-
-
-if(
-snakeDirectionValue==="down"
-)
-head.y+=20;
-
-
-if(
-snakeDirectionValue==="left"
-)
-head.x-=20;
-
-
-if(
-snakeDirectionValue==="right"
-)
-head.x+=20;
-
-
-if(
-head.x<0 ||
-head.y<0 ||
-head.x>=500 ||
-head.y>=500
-){
-
-snakeGameOver();
-
-return;
-
-}
-
-
-for(
-let part of snake
-){
-
-if(
-head.x===part.x &&
-head.y===part.y
-){
-
-snakeGameOver();
-
-return;
-
-}
-
-}
-
-
-snake.unshift(head);
-
-
-if(
-head.x===snakeFood.x &&
-head.y===snakeFood.y
-){
-
-snakeScore++;
-
-document.getElementById(
-"snakeScore"
-).textContent=
-snakeScore;
-
-
-if(
-snakeScore>bestScore
-){
-
-bestScore=
-snakeScore;
-
-localStorage.setItem(
-"gvBest",
-bestScore
-);
-
-updateStats();
-
-}
-
-createFood();
-
-}
-
-else{
-
-snake.pop();
-
-}
-
-
-drawSnake();
-
-}
-
-
-
-function drawSnake(){
-
-snakeCtx.fillStyle=
-"#050b15";
-
-snakeCtx.fillRect(
-0,
-0,
-500,
-500
-);
-
-
-snakeCtx.strokeStyle=
-"#111c32";
-
-
-for(
-let i=0;
-i<=500;
-i+=20
-){
-
-snakeCtx.beginPath();
-
-snakeCtx.moveTo(
-i,
-0
-);
-
-snakeCtx.lineTo(
-i,
-500
-);
-
-snakeCtx.stroke();
-
-
-snakeCtx.beginPath();
-
-snakeCtx.moveTo(
-0,
-i
-);
-
-snakeCtx.lineTo(
-500,
-i
-);
-
-snakeCtx.stroke();
-
-}
-
-
-snakeCtx.fillStyle=
-"#ef4444";
-
-
-snakeCtx.beginPath();
-
-snakeCtx.arc(
-snakeFood.x+10,
-snakeFood.y+10,
-8,
-0,
-Math.PI*2
-);
-
-snakeCtx.fill();
-
-
-snake.forEach(
-(part,index)=>{
-
-snakeCtx.fillStyle=
-index===0
-?"#c084fc"
-:"#22c55e";
-
-
-snakeCtx.fillRect(
-part.x+2,
-part.y+2,
-16,
-16
-);
-
-}
-);
-
-}
-
-
-
-function snakeGameOver(){
-
-clearInterval(gameTimer);
-
-alert(
-"💀 Game Over!\n\nScore: "+
-snakeScore
-);
-
-loadSnake();
-
-}
-
-
-
-/* =====================================
-CLICKER
-===================================== */
-
+box().innerHTML=`
+<div class="bigNumber" id="clickObject">${icon}</div>
+<div class="stat">Clicks: <span id="clicks">0</span>/20</div>
+`;
 
 let clicks=0;
 
-
-function loadClicker(){
-
-document.getElementById(
-"gameTitle"
-).textContent=
-"🖱️ Crazy Clicker";
-
-
-clicks=0;
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=`
-
-<div class="clicker">
-
-<h2>
-Clicks:
-<span id="clicks">
-0
-</span>
-</h2>
-
-<br>
-
-<button
-class="click-button"
-onclick="clickButton()"
->
-CLICK!
-</button>
-
-<p style="
-margin-top:20px;
-color:#9ca3af;
-">
-Click as fast as possible!
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-function clickButton(){
-
-if(paused)
-return;
-
+document.getElementById("clickObject").onclick=()=>{
 
 clicks++;
+addScore();
 
+document.getElementById("clicks").textContent=clicks;
 
-document.getElementById(
-"clicks"
-).textContent=
-clicks;
-
-
-if(clicks>bestScore){
-
-bestScore=clicks;
-
-localStorage.setItem(
-"gvBest",
-bestScore
-);
-
-updateStats();
+if(clicks>=20){
+alert("You win! 🎉");
+}
+};
 
 }
 
+/* =========================
+   CATCH GAME
+========================= */
+
+function catchGame(icon){
+
+title("Catch the falling object!");
+
+box().innerHTML=`
+<div class="stat">Catch: <span id="caught">0</span>/10</div>
+<div id="fall" class="target">${icon}</div>
+`;
+
+let caught=0;
+
+const f=document.getElementById("fall");
+
+function move(){
+
+f.style.left=Math.random()*85+"%";
+f.style.top=Math.random()*330+"px";
 }
 
+f.onclick=()=>{
 
+caught++;
+addScore();
+document.getElementById("caught").textContent=caught;
 
-/* =====================================
-MEMORY
-===================================== */
+move();
 
+if(caught>=10){
+alert("You caught them all! 🏆");
+}
+};
 
-let memoryCards=
-[
-"🍎","🍌","🍇","🍉",
-"🍎","🍌","🍇","🍉"
-];
+move();
 
+}
 
-let firstCard=null;
+/* =========================
+   DODGE
+========================= */
 
-let secondCard=null;
+function dodgeGame(icon="💥"){
 
-let lockCards=false;
+title("Avoid the moving danger!");
 
+box().innerHTML=`
+<div class="stat">Survive for 15 seconds!</div>
+<div id="danger" class="target">${icon}</div>
+<div id="player" style="
+position:absolute;
+bottom:25px;
+left:50%;
+font-size:50px;
+">🧍</div>
+`;
+
+const d=document.getElementById("danger");
+
+document.onkeydown=e=>{
+
+let p=document.getElementById("player");
+
+let x=parseFloat(p.style.left)||50;
+
+if(e.key==="ArrowLeft")x-=5;
+if(e.key==="ArrowRight")x+=5;
+
+x=Math.max(2,Math.min(95,x));
+p.style.left=x+"%";
+};
+
+let time=15;
+
+timer=setInterval(()=>{
+
+d.style.left=Math.random()*90+"%";
+d.style.top=Math.random()*300+"px";
+
+time--;
+
+if(time<=0){
+
+clearInterval(timer);
+addScore(10);
+alert("You survived! 🏆");
+
+}
+
+},1000);
+
+}
+
+/* =========================
+   JUMP
+========================= */
+
+function jumpGame(icon){
+
+title("Press SPACE or click to jump!");
+
+box().innerHTML=`
+<div style="height:300px;position:relative">
+<div id="runner" style="
+position:absolute;
+bottom:30px;
+left:80px;
+font-size:50px;
+">${icon}</div>
+
+<div style="
+position:absolute;
+bottom:20px;
+left:0;
+right:0;
+height:10px;
+background:#555;
+"></div>
+</div>
+
+<button id="jumpButton">JUMP</button>
+`;
+
+const r=document.getElementById("runner");
+
+function jump(){
+
+r.style.transition=".25s";
+r.style.bottom="180px";
+
+setTimeout(()=>{
+r.style.bottom="30px";
+addScore();
+},250);
+
+}
+
+document.getElementById("jumpButton").onclick=jump;
+
+document.onkeydown=e=>{
+if(e.code==="Space")jump();
+};
+
+}
+
+/* =========================
+   SPEED GAME
+========================= */
+
+function speedGame(icon="⚡"){
+
+title("Click START and press the button 20 times!");
+
+box().innerHTML=`
+<div class="bigNumber">${icon}</div>
+<button id="speedButton">CLICK!</button>
+<div class="stat">Clicks: <span id="speedCount">0</span>/20</div>
+`;
+
+let c=0;
+
+document.getElementById("speedButton").onclick=()=>{
+
+c++;
+addScore();
+
+document.getElementById("speedCount").textContent=c;
+
+if(c>=20)alert("FAST! ⚡ You win!");
+};
+
+}
+
+/* =========================
+   SMASH
+========================= */
+
+function smashGame(icon="🧱"){
+
+title("Smash the object!");
+
+box().innerHTML=`
+<div class="bigNumber" id="smash">${icon}</div>
+<div class="stat">Hits: <span id="hits">0</span>/15</div>
+`;
+
+let h=0;
+
+document.getElementById("smash").onclick=()=>{
+
+h++;
+addScore();
+
+document.getElementById("hits").textContent=h;
+
+if(h>=15){
+
+document.getElementById("smash").textContent="💥";
+alert("SMASHED! 💥");
+
+}
+};
+
+}
+
+/* =========================
+   NUMBER GUESS
+========================= */
+
+function numberGame(){
+
+title("Guess the secret number from 1 to 50.");
+
+const secret=Math.floor(Math.random()*50)+1;
+
+box().innerHTML=`
+<input id="guess" type="number" min="1" max="50"
+style="padding:15px;border-radius:10px">
+<button onclick="guessNumber()">GUESS</button>
+<p id="hint" class="stat"></p>
+`;
+
+window.guessNumber=()=>{
+
+let g=Number(document.getElementById("guess").value);
+
+if(g===secret){
+
+addScore(10);
+document.getElementById("hint").textContent="🎉 Correct!";
+
+}else if(g<secret){
+
+document.getElementById("hint").textContent="⬆️ Higher!";
+
+}else{
+
+document.getElementById("hint").textContent="⬇️ Lower!";
+
+}
+
+};
+
+}
+
+/* =========================
+   DICE
+========================= */
+
+function diceGame(){
+
+title("Roll the dice. Try to get 6!");
+
+box().innerHTML=`
+<div id="dice" class="bigNumber">🎲</div>
+<button onclick="rollDice()">ROLL</button>
+<p id="diceResult" class="stat"></p>
+`;
+
+window.rollDice=()=>{
+
+let n=Math.floor(Math.random()*6)+1;
+
+document.getElementById("diceResult").textContent=
+"You rolled "+n;
+
+if(n===6)addScore(10);
+else addScore();
+
+};
+
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+function memoryGame(){
+
+title("Find the matching pairs!");
+
+const symbols=["🍎","🍎","⭐","⭐","🚀","🚀","🐸","🐸"];
+
+symbols.sort(()=>Math.random()-.5);
+
+box().innerHTML=`
+<div class="memoryGrid" id="memory"></div>
+`;
+
+let first=null;
+let locked=false;
 let matches=0;
 
+symbols.forEach((s,i)=>{
 
+const btn=document.createElement("button");
 
-function loadMemory(){
+btn.className="memoryCard";
+btn.textContent="❓";
 
-document.getElementById(
-"gameTitle"
-).textContent=
-"🧠 Memory Match";
+btn.onclick=()=>{
 
+if(locked||btn.textContent!=="❓")return;
 
-let shuffled=
-[...memoryCards]
-.sort(
-()=>Math.random()-.5
-);
+btn.textContent=s;
 
+if(!first){
 
-matches=0;
+first={btn,s};
 
-firstCard=null;
+}else{
 
-secondCard=null;
-
-lockCards=false;
-
-
-let html=
-'<div class="memory-grid">';
-
-
-shuffled.forEach(
-(value,index)=>{
-
-html+=`
-
-<button
-class="memory-card"
-id="memory${index}"
-onclick="memoryClick(
-${index},
-'${value}'
-)"
->
-${value}
-</button>
-
-`;
-
-});
-
-
-html+=
-"</div>";
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=
-html;
-
-}
-
-
-
-function memoryClick(index,value){
-
-if(
-lockCards ||
-paused
-)
-return;
-
-
-let card=
-document.getElementById(
-"memory"+index
-);
-
-
-if(
-card.classList.contains("open")
-)
-return;
-
-
-card.classList.add("open");
-
-
-if(
-firstCard===null
-){
-
-firstCard={
-index,
-value
-};
-
-return;
-
-}
-
-
-secondCard={
-index,
-value
-};
-
-
-lockCards=true;
-
-
-if(
-firstCard.value===
-secondCard.value
-){
+if(first.s===s){
 
 matches++;
+addScore(5);
+first=null;
 
-firstCard=null;
+if(matches===4)alert("Memory complete! 🧠");
 
-secondCard=null;
+}else{
 
-lockCards=false;
+locked=true;
 
+setTimeout(()=>{
 
-if(matches===4){
+btn.textContent="❓";
+first.btn.textContent="❓";
 
-alert(
-"🏆 You won Memory Match!"
-);
+first=null;
+locked=false;
 
-}
-
-}
-
-else{
-
-setTimeout(
-()=>{
-
-document.getElementById(
-"memory"+firstCard.index
-).classList.remove(
-"open"
-);
-
-
-document.getElementById(
-"memory"+secondCard.index
-).classList.remove(
-"open"
-);
-
-
-firstCard=null;
-
-secondCard=null;
-
-lockCards=false;
-
-},
-700
-);
+},700);
 
 }
-
-}
-
-
-
-/* =====================================
-DODGE
-===================================== */
-
-
-let dodgeCanvas;
-
-let dodgeCtx;
-
-let player;
-
-let enemies=[];
-
-let dodgeScore=0;
-
-
-
-function loadDodge(){
-
-document.getElementById(
-"gameTitle"
-).textContent=
-"☄️ Sky Dodge";
-
-
-document.getElementById(
-"gameArea"
-).innerHTML=`
-
-<p>
-Move with A/D or arrow keys
-</p>
-
-<br>
-
-<canvas
-id="dodgeCanvas"
-width="500"
-height="500"
-style="
-background:#090f20;
-border:2px solid #8b5cf6;
-max-width:90vw;
-"
-></canvas>
-
-<p style="margin-top:10px">
-Score:
-<b id="dodgeScore">
-0
-</b>
-</p>
-
-`;
-
-
-dodgeCanvas=
-document.getElementById(
-"dodgeCanvas"
-);
-
-dodgeCtx=
-dodgeCanvas.getContext("2d");
-
-
-player={
-x:230,
-y:440,
-width:40,
-height:40
-};
-
-
-enemies=[];
-
-dodgeScore=0;
-
-paused=false;
-
-
-clearInterval(gameTimer);
-
-gameTimer=
-setInterval(
-updateDodge,
-30
-);
-
-}
-
-
-
-document.onkeydown=
-function(event){
-
-if(
-currentGame===0
-){
-
-if(event.key==="ArrowUp")
-snakeMove("up");
-
-if(event.key==="ArrowDown")
-snakeMove("down");
-
-if(event.key==="ArrowLeft")
-snakeMove("left");
-
-if(event.key==="ArrowRight")
-snakeMove("right");
-
-}
-
-
-if(
-currentGame===3
-){
-
-if(
-event.key==="ArrowLeft" ||
-event.key==="a"
-)
-player.x-=25;
-
-
-if(
-event.key==="ArrowRight" ||
-event.key==="d"
-)
-player.x+=25;
 
 }
 
 };
 
-
-
-function updateDodge(){
-
-if(paused)
-return;
-
-
-dodgeCtx.fillStyle=
-"#080d1d";
-
-
-dodgeCtx.fillRect(
-0,
-0,
-500,
-500
-);
-
-
-if(
-Math.random()<.04
-){
-
-enemies.push({
-
-x:Math.random()*460,
-
-y:-30,
-
-size:30,
-
-speed:3+
-Math.random()*4
+document.getElementById("memory").appendChild(btn);
 
 });
 
 }
 
+/* =========================
+   BASKETBALL
+========================= */
 
-dodgeCtx.fillStyle=
-"#38bdf8";
+function basketballGame(){
 
+title("Shoot the basketball!");
 
-dodgeCtx.fillRect(
-player.x,
-player.y,
-player.width,
-player.height
-);
+box().innerHTML=`
+<div class="bigNumber">🏀</div>
+<button onclick="shootBasket()">SHOOT!</button>
+<div id="basketResult" class="stat"></div>
+`;
 
+window.shootBasket=()=>{
 
-for(
-let i=enemies.length-1;
-i>=0;
-i--
-){
+let success=Math.random()>.4;
 
-let enemy=
-enemies[i];
+if(success){
 
+addScore(5);
+document.getElementById("basketResult").textContent="🏀 SWISH!";
 
-enemy.y+=
-enemy.speed;
+}else{
 
-
-dodgeCtx.fillStyle=
-"#ef4444";
-
-
-dodgeCtx.fillRect(
-enemy.x,
-enemy.y,
-enemy.size,
-enemy.size
-);
-
-
-if(
-enemy.y>500
-){
-
-enemies.splice(
-i,
-1
-);
-
-dodgeScore++;
-
-
-document.getElementById(
-"dodgeScore"
-).textContent=
-dodgeScore;
+document.getElementById("basketResult").textContent="MISS!";
 
 }
 
+};
 
-if(
+}
 
-player.x<
-enemy.x+enemy.size &&
+/* =========================
+   PENALTY
+========================= */
 
-player.x+
-player.width>
-enemy.x &&
+function penaltyGame(ball="⚽"){
 
-player.y<
-enemy.y+enemy.size &&
+title("Take the shot!");
 
-player.y+
-player.height>
-enemy.y
+box().innerHTML=`
+<div class="bigNumber">${ball}</div>
+<button onclick="takeShot()">SHOOT</button>
+<div id="shot" class="stat"></div>
+`;
 
-){
+window.takeShot=()=>{
 
-alert(
-"💥 You lost!\nScore: "+
-dodgeScore
-);
+if(Math.random()>.45){
 
-loadDodge();
+addScore(10);
+document.getElementById("shot").textContent="GOOOOAL! ⚽🔥";
+
+}else{
+
+document.getElementById("shot").textContent="Saved! 🧤";
+
+}
+
+};
+
+}
+
+/* =========================
+   RACER
+========================= */
+
+function racerGame(){
+
+title("Press the button to accelerate your car!");
+
+box().innerHTML=`
+<div style="font-size:60px" id="car">🏎️</div>
+<div style="height:20px;background:#333;margin:30px">
+<div id="roadProgress" style="height:20px;background:#7c5cff;width:0%"></div>
+</div>
+<button onclick="accelerate()">ACCELERATE</button>
+`;
+
+let p=0;
+
+window.accelerate=()=>{
+
+p+=Math.random()*12+5;
+
+document.getElementById("roadProgress").style.width=
+Math.min(p,100)+"%";
+
+if(p>=100){
+
+addScore(20);
+alert("🏁 YOU WON THE RACE!");
+
+}
+
+};
+
+}
+
+/* =========================
+   ALIEN
+========================= */
+
+function alienGame(){
+
+title("Defeat the aliens!");
+
+box().innerHTML=`
+<div class="bigNumber" id="alien">👾</div>
+<div class="stat">HP: <span id="hp">10</span></div>
+<button onclick="shootAlien()">🔫 SHOOT</button>
+`;
+
+let hp=10;
+
+window.shootAlien=()=>{
+
+hp--;
+addScore();
+
+document.getElementById("hp").textContent=hp;
+
+if(hp<=0){
+
+document.getElementById("alien").textContent="💥";
+alert("Aliens defeated! 👾");
+
+}
+
+};
+
+}
+
+/* =========================
+   COIN
+========================= */
+
+function coinGame(){
+
+title("Collect 20 coins!");
+
+box().innerHTML=`
+<div class="bigNumber">🪙</div>
+<button onclick="collectCoin()">COLLECT COIN</button>
+<div class="stat">Coins: <span id="coins">0</span>/20</div>
+`;
+
+let c=0;
+
+window.collectCoin=()=>{
+
+c++;
+addScore();
+
+document.getElementById("coins").textContent=c;
+
+if(c>=20)alert("💰 Rich! You collected 20 coins!");
+
+};
+
+}
+
+/* =========================
+   PUNCH
+========================= */
+
+function punchGame(){
+
+title("Punch the training bag!");
+
+box().innerHTML=`
+<div class="bigNumber" id="bag">🥊</div>
+<button onclick="punch()">PUNCH!</button>
+<div class="stat">Power: <span id="power">0</span></div>
+`;
+
+let p=0;
+
+window.punch=()=>{
+
+p+=Math.floor(Math.random()*10)+1;
+
+document.getElementById("power").textContent=p;
+
+addScore();
+
+if(p>=100)alert("💥 KNOCKOUT!");
+
+};
+
+}
+
+/* =========================
+   ARCHERY
+========================= */
+
+function archeryGame(){
+
+title("Hit the target!");
+
+box().innerHTML=`
+<div class="bigNumber">🎯</div>
+<button onclick="arrowShot()">🏹 SHOOT</button>
+<div id="arrowResult" class="stat"></div>
+`;
+
+window.arrowShot=()=>{
+
+let n=Math.floor(Math.random()*10)+1;
+
+if(n>=7){
+
+addScore(10);
+document.getElementById("arrowResult").textContent=
+"🎯 BULLSEYE!";
+
+}else{
+
+document.getElementById("arrowResult").textContent=
+"Miss! Try again.";
+
+}
+
+};
+
+}
+
+/* =========================
+   SWORD
+========================= */
+
+function swordGame(){
+
+title("Defeat the enemy!");
+
+box().innerHTML=`
+<div class="bigNumber">⚔️</div>
+<div class="stat">Enemy HP: <span id="enemyHp">20</span></div>
+<button onclick="slash()">SLASH</button>
+`;
+
+let hp=20;
+
+window.slash=()=>{
+
+hp-=Math.floor(Math.random()*6)+1;
+
+document.getElementById("enemyHp").textContent=Math.max(0,hp);
+
+addScore();
+
+if(hp<=0)alert("⚔️ Enemy defeated!");
+
+};
+
+}
+
+/* =========================
+   SPACE
+========================= */
+
+function spaceGame(){
+
+title("Fire your spaceship at the enemy!");
+
+box().innerHTML=`
+<div class="bigNumber">🚀</div>
+<button onclick="laser()">🔴 FIRE LASER</button>
+<div class="stat" id="laserResult"></div>
+`;
+
+window.laser=()=>{
+
+if(Math.random()>.3){
+
+addScore(5);
+document.getElementById("laserResult").textContent="💥 HIT!";
+
+}else{
+
+document.getElementById("laserResult").textContent="MISS!";
+
+}
+
+};
+
+}
+
+/* =========================
+   BOMB
+========================= */
+
+function bombGame(){
+
+title("Click SAFE. Don't click the bomb!");
+
+box().innerHTML="";
+
+for(let i=0;i<9;i++){
+
+let btn=document.createElement("button");
+
+btn.textContent=Math.random()>.15?"🟢 SAFE":"💣";
+
+btn.style.margin="10px";
+btn.style.fontSize="25px";
+
+btn.onclick=()=>{
+
+if(btn.textContent==="💣"){
+
+alert("💥 BOOM! Game over!");
+
+}else{
+
+addScore();
+btn.textContent="⭐";
+
+}
+
+};
+
+box().appendChild(btn);
 
 }
 
 }
 
+/* =========================
+   FIND
+========================= */
+
+function findGame(icon){
+
+title("Find the hidden object!");
+
+box().innerHTML="";
+
+for(let i=0;i<16;i++){
+
+let b=document.createElement("button");
+
+b.textContent="❓";
+b.style.margin="8px";
+b.style.fontSize="25px";
+
+b.onclick=()=>{
+
+if(b.textContent==="❓"){
+
+if(Math.random()>.85){
+
+b.textContent=icon;
+addScore(10);
+alert("🎉 Found it!");
+
+}else{
+
+b.textContent="❌";
 }
 
+}
 
+};
 
-/* =====================================
-SEARCH
-===================================== */
-
-
-function searchGames(){
-
-filterGames();
+box().appendChild(b);
 
 }
 
+}
 
+/* =========================
+   POTION
+========================= */
 
-/* =====================================
-FILTER
-===================================== */
+function potionGame(){
 
+title("Mix the magic potion!");
 
-function filterGames(){
+box().innerHTML=`
+<button onclick="mixPotion('🔴')">🔴</button>
+<button onclick="mixPotion('🔵')">🔵</button>
+<button onclick="mixPotion('🟢')">🟢</button>
+<button onclick="mixPotion('🟡')">🟡</button>
+<div id="potion" class="bigNumber">🧪</div>
+`;
 
-let text=
-document.getElementById(
-"search"
-).value.toLowerCase();
+let mix="";
 
+window.mixPotion=x=>{
 
-let category=
-document.getElementById(
-"category"
-).value;
+mix+=x;
+document.getElementById("potion").textContent=mix;
 
+if(mix.length>=4){
 
-let cards=
-document.querySelectorAll(
-".game-card"
-);
+addScore(10);
+alert("🧙 Magic potion created!");
 
+}
+
+};
+
+}
+
+/* =========================
+   RHYTHM
+========================= */
+
+function rhythmGame(){
+
+title("Tap the button to the beat!");
+
+box().innerHTML=`
+<div class="bigNumber">🎵</div>
+<button onclick="beat()">TAP!</button>
+<div id="beatResult" class="stat"></div>
+`;
 
 let count=0;
 
-
-cards.forEach(
-card=>{
-
-let name=
-card.dataset.name;
-
-let cat=
-card.dataset.category;
-
-
-let matchesText=
-name.includes(text);
-
-
-let matchesCategory=
-category==="all" ||
-cat===category;
-
-
-if(
-matchesText &&
-matchesCategory
-){
-
-card.style.display=
-"block";
+window.beat=()=>{
 
 count++;
+addScore();
 
-}
-else{
+document.getElementById("beatResult").textContent=
+"Beat "+count;
 
-card.style.display=
-"none";
+if(count>=15)alert("🎵 Great rhythm!");
 
-}
-
-});
-
-
-document.getElementById(
-"gameCount"
-).textContent=
-count+
-" Games";
+};
 
 }
 
+/* =========================
+   PIANO
+========================= */
 
+function pianoGame(){
 
-/* =====================================
-FAVORITE
-===================================== */
+title("Play the mini piano!");
 
+box().innerHTML="";
 
-function favorite(button){
+["C","D","E","F","G","A","B"].forEach((n,i)=>{
 
-button.textContent=
-button.textContent==="♡"
-?"❤️"
-:"♡";
+let b=document.createElement("button");
 
-}
+b.textContent=n;
+b.style.background="white";
+b.style.color="black";
+b.style.margin="4px";
+b.style.width="70px";
+b.style.height="150px";
 
+b.onclick=()=>{
 
+beep(300+i*70,.2);
+addScore();
 
-/* =====================================
-RANDOM GAME
-===================================== */
+};
 
+box().appendChild(b);
 
-function randomGame(){
-
-let index=
-Math.floor(
-Math.random()*100
-);
-
-joinGame(index);
-
-}
-
-
-
-/* =====================================
-SETTINGS
-===================================== */
-
-
-function openSettings(){
-
-document.getElementById(
-"settings"
-).style.display=
-document.getElementById(
-"settings"
-).style.display==="block"
-?"none"
-:"block";
-
-}
-
-
-
-function openProfile(){
-
-document.getElementById(
-"profile"
-).style.display=
-document.getElementById(
-"profile"
-).style.display==="block"
-?"none"
-:"block";
-
-document.getElementById(
-"profilePlayed"
-).textContent=
-gamesPlayed;
-
-document.getElementById(
-"profileBest"
-).textContent=
-bestScore;
-
-document.getElementById(
-"profileLevel"
-).textContent=
-Math.floor(
-gamesPlayed/5
-)+1;
-
-}
-
-
-
-function toggleTheme(){
-
-document.body.classList.toggle(
-"light"
-);
-
-}
-
-
-
-function toggleSound(){
-
-soundOn=!soundOn;
-
-alert(
-soundOn
-?"🔊 Sound ON"
-:"🔇 Sound OFF"
-);
-
-}
-
-
-
-/* =====================================
-STATS
-===================================== */
-
-
-function updateStats(){
-
-document.getElementById(
-"gamesPlayed"
-).textContent=
-gamesPlayed;
-
-
-document.getElementById(
-"bestScore"
-).textContent=
-bestScore;
-
-document.getElementById(
-"profileBest"
-).textContent=
-bestScore;
-
-document.getElementById(
-"profilePlayed"
-).textContent=
-gamesPlayed;
-
-
-document.getElementById(
-"level"
-).textContent=
-Math.floor(
-gamesPlayed/5
-)+1;
-
-}
-
-
-
-/* =====================================
-HOME
-===================================== */
-
-
-function goHome(){
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
 });
 
 }
 
+/* =========================
+   COLOR
+========================= */
 
-updateStats();
+function colorGame(){
+
+title("Click the correct color!");
+
+let colors=[
+["RED","#e74c3c"],
+["BLUE","#3498db"],
+["GREEN","#2ecc71"],
+["YELLOW","#f1c40f"]
+];
+
+let correct=Math.floor(Math.random()*4);
+
+box().innerHTML=`
+<div class="bigNumber" style="font-size:45px">
+${colors[correct][0]}
+</div>
+<div id="colors"></div>
+`;
+
+colors.forEach((c,i)=>{
+
+let b=document.createElement("button");
+
+b.textContent=c[0];
+b.style.background=c[1];
+b.style.margin="8px";
+
+b.onclick=()=>{
+
+if(i===correct){
+
+addScore(10);
+alert("Correct! 🎨");
+
+}else{
+
+alert("Wrong color!");
+
+}
+
+};
+
+document.getElementById("colors").appendChild(b);
+
+});
+
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+function quizGame(){
+
+title("Answer the question!");
+
+box().innerHTML=`
+<h2>What planet do we live on?</h2>
+<div class="choiceGrid">
+<button onclick="quizAnswer(false)">Mars</button>
+<button onclick="quizAnswer(false)">Jupiter</button>
+<button onclick="quizAnswer(true)">Earth</button>
+<button onclick="quizAnswer(false)">Venus</button>
+</div>
+`;
+
+window.quizAnswer=correct=>{
+
+if(correct){
+
+addScore(10);
+alert("Correct! 🌍");
+
+}else{
+
+alert("Wrong! Try again.");
+
+}
+
+};
+
+}
+
+/* =========================
+   MATH
+========================= */
+
+function mathGame(){
+
+let a=Math.floor(Math.random()*20);
+let b=Math.floor(Math.random()*20);
+let answer=a+b;
+
+title("Solve the math problem!");
+
+box().innerHTML=`
+<div class="bigNumber" style="font-size:50px">
+${a} + ${b}
+</div>
+<input id="mathAnswer" type="number" style="padding:12px">
+<button onclick="checkMath()">CHECK</button>
+<div id="mathResult" class="stat"></div>
+`;
+
+window.checkMath=()=>{
+
+let x=Number(document.getElementById("mathAnswer").value);
+
+if(x===answer){
+
+addScore(10);
+document.getElementById("mathResult").textContent="Correct! 🧠";
+
+}else{
+
+document.getElementById("mathResult").textContent="Try again!";
+
+}
+
+};
+
+}
+
+/* =========================
+   WORD
+========================= */
+
+function wordGame(){
+
+const words=["APPLE","ROCKET","TIGER","HOUSE","PIZZA"];
+
+const word=words[Math.floor(Math.random()*words.length)];
+
+title("Type the word correctly!");
+
+box().innerHTML=`
+<div class="bigNumber" style="font-size:50px">${word}</div>
+<input id="wordInput" style="padding:12px">
+<button onclick="checkWord()">CHECK</button>
+<div id="wordResult" class="stat"></div>
+`;
+
+window.checkWord=()=>{
+
+if(document.getElementById("wordInput").value.toUpperCase()===word){
+
+addScore(10);
+document.getElementById("wordResult").textContent="Correct! 🔤";
+
+}else{
+
+document.getElementById("wordResult").textContent="Wrong!";
+
+}
+
+};
+
+}
+
+/* =========================
+   PRIZE
+========================= */
+
+function prizeGame(){
+
+title("Choose a mystery prize!");
+
+box().innerHTML="";
+
+["🎁","🎁","🎁","🎁","🎁"].forEach(x=>{
+
+let b=document.createElement("button");
+
+b.textContent=x;
+b.style.fontSize="45px";
+b.style.margin="10px";
+
+b.onclick=()=>{
+
+let prizes=["💎","🪙","🏆","⭐","🍕"];
+
+b.textContent=prizes[Math.floor(Math.random()*prizes.length)];
+
+addScore(10);
+
+};
+
+box().appendChild(b);
+
+});
+
+}
+
+/* =========================
+   ULTIMATE
+========================= */
+
+function ultimateGame(){
+
+title("Ultimate Target Challenge!");
+
+box().innerHTML=`
+<div class="bigNumber">🎯</div>
+<button onclick="ultimateClick()">HIT TARGET</button>
+<div class="stat">Hits: <span id="ultimateHits">0</span>/30</div>
+`;
+
+let h=0;
+
+window.ultimateClick=()=>{
+
+h++;
+addScore(2);
+
+document.getElementById("ultimateHits").textContent=h;
+
+if(h>=30){
+
+alert("🏆 ULTIMATE WINNER!");
+
+}
+
+};
+
+}
+
+/* =========================
+   CHAMPION
+========================= */
+
+function championGame(){
+
+title("The final challenge! Complete all 10 rounds.");
+
+let round=0;
+
+box().innerHTML=`
+<div class="bigNumber">🏆</div>
+<button onclick="championRound()">START ROUND</button>
+<div class="stat" id="championText">Round 0/10</div>
+`;
+
+window.championRound=()=>{
+
+round++;
+
+addScore(10);
+
+document.getElementById("championText").textContent=
+"Round "+round+"/10";
+
+if(round>=10){
+
+alert("🏆🏆🏆 YOU ARE THE MINIVERSE CHAMPION! 🏆🏆🏆");
+
+}
+
+};
+
+}
 
 </script>
 
